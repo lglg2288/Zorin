@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfNovelEngine.AddStoryline"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfNovelEngine"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="AddStoryline" Height="100" Width="400"
+        WindowStyle="None">
+
+    <Grid Background="#202020">
+        <Label Foreground="#032e00" FontSize="17" FontStyle="Italic" Margin="0,-110,-100,0"
+               Content="ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD &#x0a;D ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD &#x0a;DD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD &#x0a; ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD &#x0a;ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD &#x0a;D ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD &#x0a;DD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD &#x0a; ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD &#x0a;ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD &#x0a;D ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD &#x0a;DD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD &#x0a; ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD &#x0a;">
+            <Label.RenderTransform>
+                <RotateTransform Angle="15" />
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="Name:" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" BorderBrush="#00fbff"/>
+        <TextBox x:Name="textBoxName" Height="20" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="49,0,10,0" />
+        <Button x:Name="btnOk" Content="OK" Height="20" Width="80" VerticalAlignment="Bottom" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="120,0,0,2" Click="btnOk_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" Height="20" Width="80" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,2" Background="#505050" Foreground="White" BorderBrush="#00fbff" Click="btnCancel_Click" />
+    </Grid>
+</Window>

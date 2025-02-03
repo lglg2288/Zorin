@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfVisualNovel.MainWindow"
+        x:Name="MyMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfVisualNovel"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized"
+        Background="Black"
+        >
+    <Viewbox>
+        <Grid Height="720" Width="1280">
+            <Canvas x:Name="CanvasGame" Background="White"/>
+            <!--<Image Source="C:\\Users\\Admin\\source\\repos\\WpfVisualNovel\\images\\i.webp" Stretch="Uniform"/>-->
+            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\dataset\images\NameBG.png" Stretch="Uniform" Margin="0,400,840,112"/>
+            <Rectangle x:Name="BGNarativePanel" Fill="Black" Margin="0,520,0,0" Opacity="0.5"/>
+
+            <Label x:Name="narativePanel" Height="200" FontSize="30" Background="Transparent" Foreground="White" VerticalAlignment="Bottom" Content="Hello world!"/>
+            <Label x:Name="CharacterNamePanel" Height="45" FontSize="30" Background="Transparent" Foreground="White" VerticalAlignment="Top" Content="Character" Margin="55,470,944,0"/>
+            <Button x:Name="HandlerNarativePanel" Height="200" VerticalAlignment="Bottom" Opacity="0.0" Click="HandlerNarativePanel_Click"/>
+            
+            <StackPanel x:Name="myBGStackPanel"></StackPanel>
+            
+            <StackPanel x:Name="myStackPanel"></StackPanel>
+        </Grid>
+    </Viewbox>
+
+</Window>
