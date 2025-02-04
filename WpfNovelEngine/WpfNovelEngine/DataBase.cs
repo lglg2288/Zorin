@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.Entity.ModelConfiguration.Configuration;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Linq;
 using System.Security.Cryptography;
@@ -239,7 +241,8 @@ namespace WpfNovelEngine
             {
                 QuestionID = Convert.ToInt32(DBdata.GetValue(0));
                 DBdata.Close();
-                DBCommand.CommandText = $"INSERT INTO Answers(Text, NextPageID, QuestionID) VALUES({choice}, (SELECT StorylineID FROM Storylines WHERE Name = '{NextStoryline}'), {QuestionID});";
+
+                DBCommand.CommandText = $"INSERT INTO Answers(Text, NextPageID, QuestionID) VALUES('{choice}', (SELECT StorylineID FROM Storylines WHERE Name = '{NextStoryline}'), {QuestionID});";
                 DBdata = DBCommand.ExecuteReader();
                 DBdata.Close();
             }
@@ -248,18 +251,48 @@ namespace WpfNovelEngine
                 DBdata.Close();
                 DBCommand.CommandText = $"INSERT INTO Questions (StorylineID, PageID) VALUES ((SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}'), {pageNumber});";
                 DBdata = DBCommand.ExecuteReader();
-                QuestionID = Convert.ToInt32(DBdata.GetValue(0));
                 DBdata.Close();
+
                 DBCommand.CommandText = $"SELECT QuestionID FROM Questions WHERE PageID = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}');";
                 DBdata = DBCommand.ExecuteReader();
+                DBdata.Read();
                 QuestionID = Convert.ToInt32(DBdata.GetValue(0));
                 DBdata.Close();
+
                 DBCommand.CommandText = $"INSERT INTO Answers(Text, NextPageID, QuestionID) VALUES({choice}, (SELECT StorylineID FROM Storylines WHERE Name = '{NextStoryline}'), {QuestionID});";
                 DBdata = DBCommand.ExecuteReader();
                 DBdata.Close();
             }
 
             return;
+        }
+
+        public void SendChoices(int pageNumber, string Storyline, out Dictionary<string, int> choices)
+        {
+            choices = null;
+            return;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pageNumber"></param>
+        /// <param name="Storyline"></param>
+        /// <returns>Возвращает true если страница isQuestion, иначе false</returns>
+        public bool pageIsQuestion(int pageNumber, string Storyline)
+        {
+            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT QuestionID FROM Questions WHERE PageID = (SELECT PageID FROM Pages WHERE Number = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}'))", DBconnect);
+            DBdata = DBCommand.ExecuteReader();
+            if(DBdata.Read())
+            {
+                DBdata.Close();
+                return true;
+            }
+            else
+            {
+                DBdata.Close();
+                return false;
+            }
         }
 
         private void push_up<T>(ref T[] arr)

@@ -15,5 +15,6 @@ namespace WpfNovelEngine
         public int? BGHeight;
         public int? BGPositionX;
         public int? BGPositionY;
+        public Dictionary<string, int> Choices;
     }
 }

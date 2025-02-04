@@ -202,7 +202,7 @@
             <ComboBox x:Name="comboBoxStoryline" Grid.Row="0" Grid.Column="2" Margin="96,4,300,320"/>
             <ComboBox x:Name="comboBoxPage" Grid.Row="0" Grid.Column="2" Margin="96,39,300,285"/>
             <TextBox x:Name="textBoxChoise" Grid.Row="0" Grid.Column="2" Margin="96,75,300,249" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2"/>
-            <ComboBox x:Name="comboBoxChoiseToStoryline" Grid.Row="0" Grid.Column="2" Margin="174,106,213,218"/>
+            <ComboBox x:Name="comboBoxChoiceToStoryline" Grid.Row="0" Grid.Column="2" Margin="174,106,213,218"/>
 
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\plusORcross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="326,4,204,318"/>
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\insert.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="339,25,164,264"/>

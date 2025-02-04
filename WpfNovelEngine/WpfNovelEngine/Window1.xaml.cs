@@ -100,12 +100,17 @@ namespace WpfNovelEngine
         void RefreshData()
         {
             var SelectedItemStoryLine = comboBoxStoryline.SelectedItem;
-            var SelectedItemPages = comboBoxPage.SelectedItem;
+            var SelectedItemPages = comboBoxPage.SelectedItem;            
 
             if (SelectedItemStoryLine != null)
             {
                 if (SelectedItemPages != null)
                 {
+                    if (db.pageIsQuestion(Convert.ToInt32(SelectedItemPages), SelectedItemStoryLine.ToString()))
+                    {
+
+                    }
+
                     Page page = new Page();
                     db.SendPage(Convert.ToInt32(SelectedItemPages), SelectedItemStoryLine.ToString(), out page);
                     if (page != null)
@@ -129,9 +134,11 @@ namespace WpfNovelEngine
             string[] storylines;
             db.SendStorylines(out storylines);            
             comboBoxStoryline.Items.Clear();
+            comboBoxChoiceToStoryline.Items.Clear();
             for (int i = 0; i < storylines?.Length; i++)
             {
                 comboBoxStoryline.Items.Add(storylines[i]);
+                comboBoxChoiceToStoryline.Items.Add(storylines[i]);
             }
 
             int[] pages;
@@ -241,9 +248,7 @@ namespace WpfNovelEngine
 
         private void btnAddChoiсe_Click(object sender, RoutedEventArgs e)
         {
-            db.AddChoice();
-            //comboBoxStoryline.SelectedItem.ToString();
-            //Convert.ToInt32(comboBoxPage.SelectedItem);
+            db.AddChoice(comboBoxStoryline.SelectedItem.ToString(), Convert.ToInt32(comboBoxPage.SelectedItem), textBoxChoise.Text, comboBoxChoiceToStoryline.SelectedItem.ToString());
         }
     }
 }
