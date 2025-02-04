@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Zorin\\WpfNovelEngine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|c:\\zorin\\wpfnovelengine\\wpfnovelengine\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\dialogpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\dialogpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\window1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\window1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|c:\\zorin\\wpfnovelengine\\wpfnovelengine\\window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\dialogpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\dialogpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\gameplay.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -66,8 +66,7 @@
               "RelativeToolTip": "WpfNovelEngine\\GamePlay.xaml.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAAwDAAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T03:50:01.039Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-31T03:50:01.039Z"
             },
             {
               "$type": "Document",
@@ -77,7 +76,7 @@
               "RelativeDocumentMoniker": "WpfNovelEngine\\DataBase.cs",
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\DataBase.cs",
               "RelativeToolTip": "WpfNovelEngine\\DataBase.cs",
-              "ViewState": "AgIAAO0AAAAAAAAAAAAowPEAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAOcAAAAAAQAAAAAxwOkAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-23T16:56:32.557Z",
               "EditorCaption": ""
@@ -91,8 +90,7 @@
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\GamePlay.xaml",
               "RelativeToolTip": "WpfNovelEngine\\GamePlay.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-31T03:47:07.316Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-31T03:47:07.316Z"
             },
             {
               "$type": "Document",
@@ -102,14 +100,14 @@
               "RelativeDocumentMoniker": "WpfNovelEngine\\Window1.xaml.cs",
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\Window1.xaml.cs",
               "RelativeToolTip": "WpfNovelEngine\\Window1.xaml.cs",
-              "ViewState": "AgIAAOEAAAAAAAAAAAAAAPQAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAAAPMAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-20T03:40:24.037Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Window1.xaml",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\Window1.xaml",
               "RelativeDocumentMoniker": "WpfNovelEngine\\Window1.xaml",
@@ -121,7 +119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "DialogPage.cs",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\DialogPage.cs",
               "RelativeDocumentMoniker": "WpfNovelEngine\\DialogPage.cs",
@@ -129,8 +127,7 @@
               "RelativeToolTip": "WpfNovelEngine\\DialogPage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T21:28:39.268Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T21:28:39.268Z"
             },
             {
               "$type": "Document",
@@ -141,8 +138,7 @@
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\DelStoryline.xaml",
               "RelativeToolTip": "WpfNovelEngine\\DelStoryline.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-31T12:48:36.625Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-31T12:48:36.625Z"
             },
             {
               "$type": "Document",
@@ -154,8 +150,7 @@
               "RelativeToolTip": "WpfNovelEngine\\MainWindow.xaml.cs",
               "ViewState": "AgIAAFcAAAAAAAAAAAAYwGoAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T04:21:32.755Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-20T04:21:32.755Z"
             },
             {
               "$type": "Document",
@@ -166,8 +161,7 @@
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\MainWindow.xaml",
               "RelativeToolTip": "WpfNovelEngine\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-20T04:22:09.724Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-20T04:22:09.724Z"
             },
             {
               "$type": "Document",
@@ -191,8 +185,7 @@
               "RelativeToolTip": "WpfNovelEngine\\AddStoryline.xaml.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAEwCEAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T20:51:54.837Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T20:51:54.837Z"
             }
           ]
         }

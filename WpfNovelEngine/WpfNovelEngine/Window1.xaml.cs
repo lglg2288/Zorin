@@ -241,6 +241,7 @@ namespace WpfNovelEngine
 
         private void btnAddChoiсe_Click(object sender, RoutedEventArgs e)
         {
+            db.AddChoice();
             //comboBoxStoryline.SelectedItem.ToString();
             //Convert.ToInt32(comboBoxPage.SelectedItem);
         }
