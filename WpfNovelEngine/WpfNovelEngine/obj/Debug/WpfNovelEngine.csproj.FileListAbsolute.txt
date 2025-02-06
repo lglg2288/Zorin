@@ -62,3 +62,5 @@ C:\Zorin\WpfNovelEngine\WpfNovelEngine\WpfNovelEngine\obj\Debug\WpfNovelEngine.c
 C:\Zorin\WpfNovelEngine\WpfNovelEngine\WpfNovelEngine\obj\Debug\WpfNovel.B1A32568.Up2Date
 C:\Zorin\WpfNovelEngine\WpfNovelEngine\WpfNovelEngine\obj\Debug\WpfNovelEngine.exe
 C:\Zorin\WpfNovelEngine\WpfNovelEngine\WpfNovelEngine\obj\Debug\WpfNovelEngine.pdb
+C:\Zorin\WpfNovelEngine\WpfNovelEngine\obj\Debug\DelChoice.g.cs
+C:\Zorin\WpfNovelEngine\WpfNovelEngine\obj\Debug\DelChoice.baml

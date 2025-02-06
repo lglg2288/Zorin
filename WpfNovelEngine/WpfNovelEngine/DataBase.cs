@@ -54,8 +54,6 @@ namespace WpfNovelEngine
         /// <returns>Номер созданой страницы.</returns>
         public int Addpage(string StorylineName)
         {
-            
-
             SQLiteCommand DBcommand = new SQLiteCommand($"SELECT MAX(Number) FROM Pages WHERE StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{StorylineName}');", DBconnect);
             DBdata = DBcommand.ExecuteReader();
             if (!DBdata.Read())
@@ -259,7 +257,7 @@ namespace WpfNovelEngine
                 QuestionID = Convert.ToInt32(DBdata.GetValue(0));
                 DBdata.Close();
 
-                DBCommand.CommandText = $"INSERT INTO Answers(Text, NextPageID, QuestionID) VALUES({choice}, (SELECT StorylineID FROM Storylines WHERE Name = '{NextStoryline}'), {QuestionID});";
+                DBCommand.CommandText = $"INSERT INTO Answers(Text, NextPageID, QuestionID) VALUES('{choice}', (SELECT StorylineID FROM Storylines WHERE Name = '{NextStoryline}'), {QuestionID});";
                 DBdata = DBCommand.ExecuteReader();
                 DBdata.Close();
             }
@@ -267,9 +265,58 @@ namespace WpfNovelEngine
             return;
         }
 
-        public void SendChoices(int pageNumber, string Storyline, out Dictionary<string, int> choices)
+        /// <summary>
+        /// удаляет свойство страницы Question если все варианты ответа удалены
+        /// </summary>
+        /// <param name="Storyline"></param>
+        /// <param name="pageNumber"></param>
+        /// <param name="answer"></param>
+        public void DelChoice(string Storyline, int pageNumber, string answer)
         {
-            choices = null;
+            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT QuestionID FROM Questions WHERE PageID = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}');", DBconnect);
+            DBdata = DBCommand.ExecuteReader();
+            int QuestionID;
+
+            if (DBdata.Read())
+            {
+                QuestionID = Convert.ToInt32(DBdata.GetValue(0));
+                DBdata.Close();
+
+                DBCommand.CommandText = $"DELETE FROM Answers WHERE QuestionID = {QuestionID} AND Text = '{answer}'";
+                DBdata = DBCommand.ExecuteReader();
+                DBdata.Close();
+
+                //удаляем свойство страницы Question если все варианты ответа удалены
+                DBCommand.CommandText = $"SELECT QuestionID FROM Answers";
+                DBdata = DBCommand.ExecuteReader();
+                if (!DBdata.Read())
+                    delQuestion(pageNumber, Storyline);
+            }
+            else
+            {
+                DBdata.Close();                
+            }
+
+            return;
+        }
+
+        public void GetChoices(int pageNumber, string Storyline, out ChoiceButton[] choices)
+        {
+            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT Text, NextPageID FROM Answers WHERE QuestionID = (SELECT QuestionID FROM Questions WHERE PageID = (SELECT PageID FROM Pages WHERE Number = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}')));", DBconnect);
+            DBdata = DBCommand.ExecuteReader();
+
+            choices = new ChoiceButton[0];
+
+            
+
+            while (DBdata.Read())
+            {
+                push_up(ref choices);
+                choices[choices.Length - 1] = new ChoiceButton(DBdata.GetValue(0).ToString(), Convert.ToInt32(DBdata.GetValue(1) == DBNull.Value ? -1 : DBdata.GetValue(1)));
+            }
+            DBdata.Close();
+            if (choices.Length <= 0)
+                choices = null;
             return;
         }
 
@@ -281,7 +328,11 @@ namespace WpfNovelEngine
         /// <returns>Возвращает true если страница isQuestion, иначе false</returns>
         public bool pageIsQuestion(int pageNumber, string Storyline)
         {
-            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT QuestionID FROM Questions WHERE PageID = (SELECT PageID FROM Pages WHERE Number = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}'))", DBconnect);
+            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT QuestionID FROM Questions WHERE PageID = "
+                + $"("
+                + $"SELECT PageID FROM Pages WHERE Number = {pageNumber} "
+                + $"AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}')"
+                + $")", DBconnect);
             DBdata = DBCommand.ExecuteReader();
             if(DBdata.Read())
             {
@@ -293,6 +344,25 @@ namespace WpfNovelEngine
                 DBdata.Close();
                 return false;
             }
+        }
+
+        public void delQuestion(int pageNumber, string Storyline)
+        {
+            SQLiteCommand DBCommand = new SQLiteCommand($"DELETE FROM Questions WHERE PageID = "
+                + $"("
+                + $"SELECT PageID FROM Pages WHERE Number = {pageNumber} "
+                + $"AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}')"
+                + $")", DBconnect);
+            DBdata = DBCommand.ExecuteReader();
+            DBdata.Close();
+            return;
+        }
+
+        public SQLiteDataReader custom(string SQLcommand)
+        {
+            SQLiteCommand DBCommand = new SQLiteCommand(SQLcommand, DBconnect);
+            SQLiteDataReader dataReader = DBCommand.ExecuteReader();
+            return dataReader;
         }
 
         private void push_up<T>(ref T[] arr)

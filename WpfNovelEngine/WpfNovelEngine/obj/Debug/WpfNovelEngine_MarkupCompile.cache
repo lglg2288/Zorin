@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Zorin\WpfNovelEngine\WpfNovelEngine\App.xaml
-51343463520
+6-16303560
 
-141667208028
+16-256255849
 19185542006
-AddStoryline.xaml;DelStoryline.xaml;GamePlay.xaml;MainWindow.xaml;Window1.xaml;
+AddStoryline.xaml;DelChoice.xaml;DelStoryline.xaml;GamePlay.xaml;MainWindow.xaml;Window1.xaml;
 
 False
 

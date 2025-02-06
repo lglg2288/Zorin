@@ -34,9 +34,13 @@ namespace WpfNovelEngine
         }
 
 
-        private void AddChoiсeButton(string[] questions)
+        private void AddChoiсeButton(in ChoiceButton[] choices)
         {
-            int quantity = questions.Length;
+            myBGStackPanel.Children.Clear();
+            myStackPanel.Children.Clear();
+
+            int quantity = choices.Length;
+
             Button[] ChoiseButton = new Button[quantity];
             Rectangle[] BGChoiseButton = new Rectangle[quantity];
 
@@ -55,7 +59,7 @@ namespace WpfNovelEngine
                         Height = heigth,
                         Width = width,
                         FontSize = 25,
-                        Content = questions[i]
+                        Content = choices[i].Text
                     };
 
                     myStackPanel.Children.Add(ChoiseButton[i]);
@@ -108,7 +112,12 @@ namespace WpfNovelEngine
                 {
                     if (db.pageIsQuestion(Convert.ToInt32(SelectedItemPages), SelectedItemStoryLine.ToString()))
                     {
-
+                        ChoiceButton[] choices;
+                        db.GetChoices(Convert.ToInt32(SelectedItemPages), SelectedItemStoryLine.ToString(), out choices);
+                         if (choices == null)
+                            db.delQuestion(Convert.ToInt32(SelectedItemPages), SelectedItemStoryLine.ToString());
+                        else
+                            AddChoiсeButton(in choices);
                     }
 
                     Page page = new Page();
@@ -177,9 +186,10 @@ namespace WpfNovelEngine
                 MessageBox.Show("You didn't selected StoryLine!");
                 return;
             }
-            string newPageNumber = db.Addpage(SelectedStoryline).ToString();
+            int newPageNumber = db.Addpage(SelectedStoryline);
             RefreshData();
             comboBoxPage.SelectedItem = newPageNumber;
+            RefreshData();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -248,7 +258,34 @@ namespace WpfNovelEngine
 
         private void btnAddChoiсe_Click(object sender, RoutedEventArgs e)
         {
-            db.AddChoice(comboBoxStoryline.SelectedItem.ToString(), Convert.ToInt32(comboBoxPage.SelectedItem), textBoxChoise.Text, comboBoxChoiceToStoryline.SelectedItem.ToString());
+            db.AddChoice(comboBoxStoryline.SelectedItem.ToString(), Convert.ToInt32(comboBoxPage.SelectedItem), textBoxChoise.Text, comboBoxChoiceToStoryline.SelectedItem?.ToString());
+            RefreshData();
+        }
+
+        private void btnDelChoiсe_Click(object sender, RoutedEventArgs e)
+        {
+            ChoiceButton[] choices;
+            db.GetChoices(Convert.ToInt32(comboBoxPage.SelectedItem), comboBoxStoryline.SelectedItem.ToString(), out choices);
+            new DelChoice(choices, Convert.ToInt32(comboBoxPage.SelectedItem), comboBoxStoryline.SelectedItem.ToString()).ShowDialog();
+            RefreshData();
+        }
+
+        private void comboBoxStoryline_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            comboBoxStoryline.SelectionChanged -= comboBoxStoryline_SelectionChanged;
+
+            RefreshData();
+
+            comboBoxStoryline.SelectionChanged += comboBoxStoryline_SelectionChanged;
+        }
+
+        private void comboBoxPage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            comboBoxPage.SelectionChanged -= comboBoxPage_SelectionChanged;
+
+            RefreshData();
+
+            comboBoxPage.SelectionChanged += comboBoxPage_SelectionChanged;
         }
     }
 }

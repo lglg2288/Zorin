@@ -77,7 +77,11 @@
     <Compile Include="AddStoryline.xaml.cs">
       <DependentUpon>AddStoryline.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChoiceButton.cs" />
     <Compile Include="DataBase.cs" />
+    <Compile Include="DelChoice.xaml.cs">
+      <DependentUpon>DelChoice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DelStoryline.xaml.cs">
       <DependentUpon>DelStoryline.xaml</DependentUpon>
     </Compile>
@@ -91,6 +95,10 @@
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Page Include="AddStoryline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DelChoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

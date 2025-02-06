@@ -1,13 +1,14 @@
-﻿<Window x:Class="WpfNovelEngine.Window1"
+﻿<Window x:Class="WpfNovelEngine.DelChoice"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfNovelEngine"
         mc:Ignorable="d"
-        Background="Black"
-        WindowStyle="SingleBorderWindow"
-        Title="Window1">
+        Title="DelChoice"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Height="100" Width="400">
 
     <Window.Resources>
         <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
@@ -160,82 +161,16 @@
         </Style>
     </Window.Resources>
 
-
-    <Viewbox>
-        <Grid Height="720" Width="1308" Background="#FF202020">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="350"/>
-                <RowDefinition Height="400"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="65"/>
-                <ColumnDefinition Width="620"/>
-                <ColumnDefinition Width="620"/>
-            </Grid.ColumnDefinitions>
-
-            <Viewbox Grid.Row="0" Grid.Column="1" Margin="2,0,0,0">
-                <Grid Height="720" Width="1280">
-                    <Canvas x:Name="CanvasGame" Background="White"/>
-                    <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\dataset\images\NameBG.png" Stretch="Uniform" Margin="0,400,840,112"/>
-                    <Rectangle x:Name="BGNarativePanel" Fill="Black" Margin="0,520,0,0" Opacity="0.5"/>
-
-                    <TextBlock x:Name="narativePanel" Height="200" FontSize="30" TextWrapping="Wrap" Background="Transparent" Foreground="White" VerticalAlignment="Bottom" Text="Hello world!"/>
-                    <TextBox x:Name="textBoxnarativePanel" Height="200" TextWrapping="Wrap" FontSize="30" Background="Transparent" Foreground="White" VerticalAlignment="Bottom" BorderThickness="0" TextChanged="TextBox_TextChanged" KeyDown="narativePanelInput_KeyDown"/>
-                    <Label x:Name="labelCharacter" FontSize="30" Background="Transparent" Foreground="White" Content="Character" Margin="55,470,944,200"/>
-                    <TextBox x:Name="textBoxCharacter" FontSize="30" Background="Transparent" Foreground="White" Margin="58,475,941,205" BorderThickness="0" TextChanged="textBoxCharacter_TextChanged" KeyDown="textBoxCharacter_KeyDown"/>
-                    <!--<Button x:Name="HandlerNarativePanel" Height="200" VerticalAlignment="Bottom" Opacity="0.0"/>-->
-
-                    <StackPanel x:Name="myBGStackPanel"></StackPanel>
-
-                    <StackPanel x:Name="myStackPanel"></StackPanel>
-                </Grid>
-            </Viewbox>
-
-            <Label Grid.Row="0" Grid.Column="2" Content="###btnSetBackgroud###" Foreground="White" Margin="407,4,7,320"/>            
-            <Label Grid.Row="0" Grid.Column="2" Content="###Auto button placement##" Foreground="White" Margin="407,75,7,249"/>
-
-            <Label Content="StoryLine: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,0,524,318" FontSize="17"/>
-            <Label Content="Page: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,35,524,283" FontSize="17"/>
-            <Label Content="Choise: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,70,524,248" FontSize="17"/>
-            <Label Content="Сhoice leads to: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,100,451,218" FontSize="17"/>
-            
-            <ComboBox x:Name="comboBoxStoryline" Grid.Row="0" Grid.Column="2" Margin="96,4,300,320" SelectionChanged="comboBoxStoryline_SelectionChanged"/>
-            <ComboBox x:Name="comboBoxPage" Grid.Row="0" Grid.Column="2" Margin="96,39,300,285" SelectionChanged="comboBoxPage_SelectionChanged"/>
-            <TextBox x:Name="textBoxChoise" Grid.Row="0" Grid.Column="2" Margin="96,75,300,249" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
-            <ComboBox x:Name="comboBoxChoiceToStoryline" Grid.Row="0" Grid.Column="2" Margin="174,106,213,218"/>
-
-            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\plusORcross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="326,4,204,318"/>
-            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\insert.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="339,25,164,264"/>
-            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\plusORcross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="326,74,204,248"/>            
-
-            <Button x:Name="btnAddStoryline" Grid.Row="0" Grid.Column="2" Margin="344,8,256,322" Opacity="0.0" Click="btnAddStoryline_Click"/>
-            <Button x:Name="btnDelStoryline" Grid.Row="0" Grid.Column="2" Margin="377,8,222,322" Opacity="0.0" Click="btnDelStoryline_Click"/>
-            <Button x:Name="btnAddPage" Grid.Row="0" Grid.Column="2" Margin="344,43,256,287" Opacity="0.0" Click="btnAddPage_Click"/>
-            <Button x:Name="btnDelPage" Grid.Row="0" Grid.Column="2" Margin="377,43,222,287" Opacity="0.0" Click="btnDelPage_Click"/>
-            <Button x:Name="btnAddChoiсe" Grid.Row="0" Grid.Column="2" Margin="344,78,256,252" Opacity="0.0" Click="btnAddChoiсe_Click"/>
-            <Button x:Name="btnDelChoiсe" Grid.Row="0" Grid.Column="2" Margin="377,78,222,252" Opacity="0.0" Click="btnDelChoiсe_Click"/>
-
-            <Button x:Name="btnInsert" Grid.Row="0" Grid.Column="2" Margin="423,43,177,287" Opacity="0.0" Click="btnInsert_Click"/>
-
-            <StackPanel Grid.Column="0" Grid.RowSpan="2" Background="#FF191919">
-                <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\play.png" Stretch="Uniform" Margin="2,5,2,2" Height="65"/>
-                <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\save.png" Stretch="Uniform" Margin="0,10,0,0" Height="65"/>
-                <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\menu.png" Stretch="Uniform" Margin="6,16,6,6" Height="65"/>
-                <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\refresh.png" Stretch="Uniform" Margin="5,10,6,0" Height="65"/>
-                <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\out.png" Stretch="Uniform" Margin="1,10,0,0" Height="65"/>
-            </StackPanel>
-            <StackPanel Grid.Column="0" Grid.RowSpan="2" Background="Aqua" Opacity="0.0">
-                <Button x:Name="btnPlay" Margin="0,5,0,2" Height="65" Click="btnPlay_Click"/>
-                <Button x:Name="btnSave" Margin="0,10,0,0" Height="65" Click="btnSave_Click"/>
-                <Button x:Name="btnMenu" Margin="0,16,0,6" Height="65" Click="btnMenu_Click"/>
-                <Button x:Name="btnRefresh" Margin="0,10,0,0" Height="65" Click="btnRefresh_Click"/>
-                <Button x:Name="btnOut" Margin="0,10,0,0" Height="65" Click="btnOut_Click"/>
-            </StackPanel>
-
-            <Rectangle Fill="#202020" Grid.Row="1" Grid.Column="1"/>
-            <Rectangle Grid.RowSpan="2" Grid.Column="1" Fill="#00fbff" Width="2" HorizontalAlignment="Left"/>
-            <Rectangle Grid.RowSpan="2" Grid.Column="2" Fill="#00fbff" Width="2" HorizontalAlignment="Left"/>
-            <Rectangle Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Fill="#00fbff" Height="2" VerticalAlignment="Top"/>
-        </Grid>
-    </Viewbox>
+    <Grid Background="#202020">
+        <Label Foreground="#520000" FontSize="17" FontStyle="Italic" Margin="0,-110,-100,0"
+           Content="DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE &#x0a;TE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE &#x0a;ETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE &#x0a;ELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE &#x0a;DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE &#x0a;TE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE &#x0a;ETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE &#x0a;ELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE &#x0a;DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE &#x0a;TE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE &#x0a;ETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE &#x0a;ELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE &#x0a;">
+            <Label.RenderTransform>
+                <RotateTransform Angle="15" />
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="Choice:" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" BorderBrush="#00fbff"/>
+        <ComboBox x:Name="comboBoxChoice" Height="29" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="49,0,10,0"/>
+        <Button x:Name="btnOk" Content="OK" Height="20" Width="80" VerticalAlignment="Bottom" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="120,0,0,2" Click="btnOk_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" Height="20" Width="80" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,2" Background="#505050" Foreground="White" BorderBrush="#00fbff" Click="btnCancel_Click"/>
+    </Grid>
 </Window>
