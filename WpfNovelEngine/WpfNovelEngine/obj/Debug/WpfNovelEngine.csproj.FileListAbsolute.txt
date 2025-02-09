@@ -64,3 +64,5 @@ C:\Zorin\WpfNovelEngine\WpfNovelEngine\WpfNovelEngine\obj\Debug\WpfNovelEngine.e
 C:\Zorin\WpfNovelEngine\WpfNovelEngine\WpfNovelEngine\obj\Debug\WpfNovelEngine.pdb
 C:\Zorin\WpfNovelEngine\WpfNovelEngine\obj\Debug\DelChoice.g.cs
 C:\Zorin\WpfNovelEngine\WpfNovelEngine\obj\Debug\DelChoice.baml
+C:\Zorin\WpfNovelEngine\WpfNovelEngine\obj\Debug\AddChoice.g.cs
+C:\Zorin\WpfNovelEngine\WpfNovelEngine\obj\Debug\AddChoice.baml

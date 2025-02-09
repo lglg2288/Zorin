@@ -74,6 +74,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddChoice.xaml.cs">
+      <DependentUpon>AddChoice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddStoryline.xaml.cs">
       <DependentUpon>AddStoryline.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,10 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddChoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddStoryline.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

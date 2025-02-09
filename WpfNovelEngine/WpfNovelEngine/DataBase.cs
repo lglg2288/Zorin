@@ -197,6 +197,12 @@ namespace WpfNovelEngine
 
         public void DelPage(int pageNumber, string Storyline)
         {
+            if (pageNumber == 0)
+            {
+                MessageBox.Show("Page do not selected!");
+                return;
+            }
+
             string dbCommand = "";
             dbCommand += "DELETE FROM Pages ";
             dbCommand += $"WHERE Number = {pageNumber} ";
@@ -204,7 +210,7 @@ namespace WpfNovelEngine
             dbCommand += $"StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}'); ";
             dbCommand += "UPDATE Pages ";
             dbCommand += "SET Number = Number - 1 ";
-            dbCommand += $"WHERE Number >= {pageNumber};";
+            dbCommand += $"WHERE Number > {pageNumber};";
 
             SQLiteCommand DBCommand = new SQLiteCommand(dbCommand, DBconnect);
             DBdata = DBCommand.ExecuteReader();
@@ -229,9 +235,9 @@ namespace WpfNovelEngine
                 return null;
         }
 
-        public void AddChoice(string Storyline, int pageNumber, string choice, string NextStoryline)
+        public void AddChoice(string Storyline, int pageNumber, string choice, string NextStoryline, int NextPage)
         {
-            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT QuestionID FROM Questions WHERE PageID = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}');", DBconnect);
+            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT QuestionID FROM Questions WHERE PageID = ( SELECT PageID FROM Pages WHERE Number = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}')  );", DBconnect);
             DBdata = DBCommand.ExecuteReader();
             int QuestionID;
 
@@ -239,25 +245,25 @@ namespace WpfNovelEngine
             {
                 QuestionID = Convert.ToInt32(DBdata.GetValue(0));
                 DBdata.Close();
-
-                DBCommand.CommandText = $"INSERT INTO Answers(Text, NextPageID, QuestionID) VALUES('{choice}', (SELECT StorylineID FROM Storylines WHERE Name = '{NextStoryline}'), {QuestionID});";
+                //   \/ \/ \/
+                DBCommand.CommandText = $"INSERT INTO Answers(Text, NextPageID, QuestionID) VALUES('{choice}', (SELECT PageID FROM Pages WHERE Number = {NextPage} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{NextStoryline}')), {QuestionID});";
                 DBdata = DBCommand.ExecuteReader();
                 DBdata.Close();
             }
             else
             {
                 DBdata.Close();
-                DBCommand.CommandText = $"INSERT INTO Questions (StorylineID, PageID) VALUES ((SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}'), {pageNumber});";
+                DBCommand.CommandText = $"INSERT INTO Questions (PageID) VALUES ( ( SELECT PageID FROM Pages WHERE Number = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}')  ) );";
                 DBdata = DBCommand.ExecuteReader();
                 DBdata.Close();
 
-                DBCommand.CommandText = $"SELECT QuestionID FROM Questions WHERE PageID = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}');";
+                DBCommand.CommandText = $"SELECT QuestionID FROM Questions WHERE PageID = ( SELECT PageID FROM Pages WHERE Number = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}')  );";
                 DBdata = DBCommand.ExecuteReader();
                 DBdata.Read();
                 QuestionID = Convert.ToInt32(DBdata.GetValue(0));
                 DBdata.Close();
 
-                DBCommand.CommandText = $"INSERT INTO Answers(Text, NextPageID, QuestionID) VALUES('{choice}', (SELECT StorylineID FROM Storylines WHERE Name = '{NextStoryline}'), {QuestionID});";
+                DBCommand.CommandText = $"INSERT INTO Answers(Text, NextPageID, QuestionID) VALUES('{choice}', (SELECT PageID FROM Pages WHERE Number = {NextPage} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{NextStoryline}')), {QuestionID});";
                 DBdata = DBCommand.ExecuteReader();
                 DBdata.Close();
             }

@@ -110,14 +110,18 @@ namespace WpfNovelEngine
             {
                 if (SelectedItemPages != null)
                 {
+                    myStackPanel.Children.Clear();
+                    myBGStackPanel.Children.Clear();
                     if (db.pageIsQuestion(Convert.ToInt32(SelectedItemPages), SelectedItemStoryLine.ToString()))
                     {
                         ChoiceButton[] choices;
                         db.GetChoices(Convert.ToInt32(SelectedItemPages), SelectedItemStoryLine.ToString(), out choices);
-                         if (choices == null)
+                        if (choices == null)
                             db.delQuestion(Convert.ToInt32(SelectedItemPages), SelectedItemStoryLine.ToString());
                         else
+                        {
                             AddChoiсeButton(in choices);
+                        }
                     }
 
                     Page page = new Page();
@@ -142,12 +146,10 @@ namespace WpfNovelEngine
 
             string[] storylines;
             db.SendStorylines(out storylines);            
-            comboBoxStoryline.Items.Clear();
-            comboBoxChoiceToStoryline.Items.Clear();
+            comboBoxStoryline.Items.Clear();            
             for (int i = 0; i < storylines?.Length; i++)
             {
                 comboBoxStoryline.Items.Add(storylines[i]);
-                comboBoxChoiceToStoryline.Items.Add(storylines[i]);
             }
 
             int[] pages;
@@ -189,7 +191,6 @@ namespace WpfNovelEngine
             int newPageNumber = db.Addpage(SelectedStoryline);
             RefreshData();
             comboBoxPage.SelectedItem = newPageNumber;
-            RefreshData();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -208,7 +209,6 @@ namespace WpfNovelEngine
                 textBoxnarativePanel.Text = "";
                 narativePanel.Visibility = Visibility.Visible;
                 Keyboard.ClearFocus();
-                RefreshData();
             }
         }
 
@@ -258,7 +258,7 @@ namespace WpfNovelEngine
 
         private void btnAddChoiсe_Click(object sender, RoutedEventArgs e)
         {
-            db.AddChoice(comboBoxStoryline.SelectedItem.ToString(), Convert.ToInt32(comboBoxPage.SelectedItem), textBoxChoise.Text, comboBoxChoiceToStoryline.SelectedItem?.ToString());
+            new AddChoice(textBoxChoise.Text, comboBoxStoryline.SelectedItem.ToString(), Convert.ToInt32(comboBoxPage.SelectedItem)).ShowDialog();
             RefreshData();
         }
 
