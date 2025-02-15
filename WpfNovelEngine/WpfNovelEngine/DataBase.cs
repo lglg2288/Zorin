@@ -311,9 +311,7 @@ namespace WpfNovelEngine
             SQLiteCommand DBCommand = new SQLiteCommand($"SELECT Text, NextPageID FROM Answers WHERE QuestionID = (SELECT QuestionID FROM Questions WHERE PageID = (SELECT PageID FROM Pages WHERE Number = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}')));", DBconnect);
             DBdata = DBCommand.ExecuteReader();
 
-            choices = new ChoiceButton[0];
-
-            
+            choices = new ChoiceButton[0];            
 
             while (DBdata.Read())
             {
@@ -362,6 +360,40 @@ namespace WpfNovelEngine
             DBdata = DBCommand.ExecuteReader();
             DBdata.Close();
             return;
+        }
+
+        public string GetStoryline(int PageID)
+        {
+            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT Name FROM Storylines WHERE StorylineID = (SELECT StorylineID FROM Pages WHERE PageID = {PageID});", DBconnect);
+            DBdata = DBCommand.ExecuteReader();
+            if (DBdata.Read())
+            {
+                string strStoryline = DBdata.GetValue(0).ToString();
+                DBdata.Close();
+                return strStoryline;
+            }
+            else
+            {
+                DBdata.Close();
+                return null;
+            }
+        }
+
+        public int GetPageNumber(int PageID)
+        {
+            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT Number FROM Pages WHERE PageID = {PageID};", DBconnect);
+            DBdata = DBCommand.ExecuteReader();
+            if (DBdata.Read())
+            {
+                int PageNumber = Convert.ToInt32(DBdata.GetValue(0));
+                DBdata.Close();
+                return PageNumber;
+            }
+            else
+            {
+                DBdata.Close();
+                return 0;
+            }
         }
 
         public SQLiteDataReader custom(string SQLcommand)

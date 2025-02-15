@@ -191,7 +191,7 @@
                 </Grid>
             </Viewbox>
 
-            <Label Grid.Row="0" Grid.Column="2" Content="###btnSetBackgroud###" Foreground="White" Margin="407,4,7,320"/>            
+            <Button x:Name="AddBackGround" Grid.Row="0" Grid.Column="2" Content="Add Background" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="475,4,41,320" Click="AddBackGround_Click"/>            
             <Label Grid.Row="0" Grid.Column="2" Content="###Auto button placement##" Foreground="White" Margin="407,75,7,249"/>
 
             <Label Content="StoryLine: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,0,524,318" FontSize="17"/>
@@ -231,6 +231,13 @@
             </StackPanel>
 
             <Rectangle Fill="#202020" Grid.Row="1" Grid.Column="1"/>
+            <StackPanel x:Name="StackPanelChoicesInfo" Grid.Column="1" Grid.Row="2" Margin="0,0,0,0"></StackPanel>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,0">
+                    <TextBlock x:Name="OutputTextBlock" TextWrapping="Wrap" Padding="10" Foreground="White"/>
+                </ScrollViewer>
+            </Grid>
+
             <Rectangle Grid.RowSpan="2" Grid.Column="1" Fill="#00fbff" Width="2" HorizontalAlignment="Left"/>
             <Rectangle Grid.RowSpan="2" Grid.Column="2" Fill="#00fbff" Width="2" HorizontalAlignment="Left"/>
             <Rectangle Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Fill="#00fbff" Height="2" VerticalAlignment="Top"/>

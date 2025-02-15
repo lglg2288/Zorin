@@ -17,6 +17,9 @@ using WpfVisualNovel;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.IO.Packaging;
+using Microsoft.Win32;
+using System.IO;
+using System.Diagnostics;
 
 namespace WpfNovelEngine
 {
@@ -33,7 +36,15 @@ namespace WpfNovelEngine
             RefreshData();
         }
 
-
+        private void AddChoiseInfo(in ChoiceButton[] choices)
+        {
+            InfoPanelAddText(">>Buttons");
+            for (int i = 0; i < choices.Length; i++)
+            {                
+                InfoPanelAddText('\t' + choices[i].Text + ": " + db.GetStoryline(choices[i].StorylineID) + ' ' + db.GetPageNumber(choices[i].StorylineID));
+            }
+            return;
+        }
         private void AddChoiсeButton(in ChoiceButton[] choices)
         {
             myBGStackPanel.Children.Clear();
@@ -100,7 +111,6 @@ namespace WpfNovelEngine
         {
             RefreshData();
         }
-
         void RefreshData()
         {
             var SelectedItemStoryLine = comboBoxStoryline.SelectedItem;
@@ -112,6 +122,7 @@ namespace WpfNovelEngine
                 {
                     myStackPanel.Children.Clear();
                     myBGStackPanel.Children.Clear();
+                    StackPanelChoicesInfo.Children.Clear();
                     if (db.pageIsQuestion(Convert.ToInt32(SelectedItemPages), SelectedItemStoryLine.ToString()))
                     {
                         ChoiceButton[] choices;
@@ -121,6 +132,7 @@ namespace WpfNovelEngine
                         else
                         {
                             AddChoiсeButton(in choices);
+                            AddChoiseInfo(in choices);
                         }
                     }
 
@@ -136,6 +148,7 @@ namespace WpfNovelEngine
                         };
                         Canvas.SetTop(background, (double)page.BGPositionY);
                         Canvas.SetLeft(background, (double)page.BGPositionX);
+                        CanvasGame.Children.Clear();
                         CanvasGame.Children.Add(background);
 
                         narativePanel.Text = page.Text;
@@ -205,8 +218,17 @@ namespace WpfNovelEngine
                 Page page = new Page();
                 page.Text = textBoxnarativePanel.Text;
                 db.SetPage(Convert.ToInt32(comboBoxPage.SelectedItem), comboBoxStoryline.SelectedItem.ToString(), in page);
-
                 textBoxnarativePanel.Text = "";
+
+                if (comboBoxPage.SelectedItem != null)
+                {
+                    if (comboBoxStoryline.SelectedItem != null)
+                    {
+                        db.SendPage(Convert.ToInt32(comboBoxPage.SelectedItem), comboBoxStoryline.SelectedItem.ToString(), out page);
+                        narativePanel.Text = page.Text;
+                    }
+                }
+
                 narativePanel.Visibility = Visibility.Visible;
                 Keyboard.ClearFocus();
             }
@@ -266,6 +288,11 @@ namespace WpfNovelEngine
         {
             ChoiceButton[] choices;
             db.GetChoices(Convert.ToInt32(comboBoxPage.SelectedItem), comboBoxStoryline.SelectedItem.ToString(), out choices);
+            if (choices == null)
+            {
+                MessageBox.Show("Choice button do not exist!");
+                return;
+            }
             new DelChoice(choices, Convert.ToInt32(comboBoxPage.SelectedItem), comboBoxStoryline.SelectedItem.ToString()).ShowDialog();
             RefreshData();
         }
@@ -286,6 +313,34 @@ namespace WpfNovelEngine
             RefreshData();
 
             comboBoxPage.SelectionChanged += comboBoxPage_SelectionChanged;
+        }
+
+        public void InfoPanelAddText(string text)
+        {
+            OutputTextBlock.Text += text + "\n";
+        }
+
+        private void AddBackGround_Click(object sender, RoutedEventArgs e)
+        {
+            string projectDirectory = Directory.GetCurrentDirectory() + @"\dataset\images";
+
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Title = "Выберите изображение",
+                Filter = "Изображения (*.png;*.jpg;*.jpeg;*.bmp;*.gif)|*.png;*.jpg;*.jpeg;*.bmp;*.gif|Все файлы (*.*)|*.*",
+                Multiselect = false,
+                InitialDirectory = Directory.Exists(projectDirectory) ? projectDirectory : null
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+                Page page = new Page();
+                page.BGImagePath = selectedFilePath;
+                db.SetPage(Convert.ToInt32(comboBoxPage.SelectedItem), comboBoxStoryline.SelectedItem.ToString(), in page);
+
+                RefreshData();
+            }
         }
     }
 }

@@ -39,7 +39,7 @@ namespace WpfNovelEngine
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
             countPage++;
-
+            btnNextPage.Visibility = Visibility.Visible;
             Page page;
             db.SendPage(countPage, Storyline, out page);
 
@@ -58,6 +58,7 @@ namespace WpfNovelEngine
                     db.delQuestion(countPage, Storyline);
                 else
                     AddChoiсeButton(in choices);
+                btnNextPage.Visibility = Visibility.Hidden;
             }
 
             Image background = new Image
@@ -68,6 +69,7 @@ namespace WpfNovelEngine
             };
             Canvas.SetTop(background, (double)page.BGPositionY);
             Canvas.SetLeft(background, (double)page.BGPositionX);
+            CanvasGame.Children.Clear();
             CanvasGame.Children.Add(background);
 
             labelDialog.Content = page.Text;
@@ -140,18 +142,14 @@ namespace WpfNovelEngine
                     {
                         this.Close();
                         return;
-                    }                    
-                    //SQLiteDataReader dataReader = db.custom($"SELECT Name TEXT FROM Storylines WHERE StorylineID = {choices[i].StorylineID}");
-                    //if (dataReader.Read())
-                    //    Storyline = dataReader.GetValue(0);
-                    //myStackPanel.Children.Clear();
-                    //myBGStackPanel.Children.Clear();
-                    //currentEntry = 0;
-                    //db.SendDialogPage(currentEntry, currentBrange, out currentDialogPage);
-                    //narativePanel.Content = currentDialogPage.content;
-                    //CharacterNamePanel.Content = currentDialogPage.character;
-                    //currentEntry++;
-                    //HandlerNarativePanel.Visibility = Visibility.Visible;
+                    }
+                    Storyline = db.GetStoryline(choices[i].StorylineID);
+                    countPage = db.GetPageNumber(choices[i].StorylineID) - 1;
+
+                    myStackPanel.Children.Clear();
+                    myBGStackPanel.Children.Clear();
+
+                    btnNextPage_Click(null, null);
                     return;
                 }
             }
