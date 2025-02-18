@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,6 @@ namespace WpfNovelEngine
 
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
-            countPage++;
             btnNextPage.Visibility = Visibility.Visible;
             Page page;
             db.SendPage(countPage, Storyline, out page);
@@ -49,6 +49,9 @@ namespace WpfNovelEngine
                 this.Close();
                 return;
             }
+
+            countPage++;
+
 
             if (db.pageIsQuestion(countPage, Storyline))
             {
@@ -61,12 +64,26 @@ namespace WpfNovelEngine
                 btnNextPage.Visibility = Visibility.Hidden;
             }
 
-            Image background = new Image
+            Image background;
+            try
             {
-                Width = (double)page.BGWidth,
-                Height = (double)page.BGHeight,
-                Source = new BitmapImage(new Uri(page.BGImagePath))
-            };
+                background = new Image
+                {
+                    Width = (double)page.BGWidth,
+                    Height = (double)page.BGHeight,
+                    Source = new BitmapImage(new Uri(page.BGImagePath))
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                background = new Image
+                {
+                    Width = (double)page.BGWidth,
+                    Height = (double)page.BGHeight,
+                    Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\dataset\images\error404.jpg"))
+                };
+            }
             Canvas.SetTop(background, (double)page.BGPositionY);
             Canvas.SetLeft(background, (double)page.BGPositionX);
             CanvasGame.Children.Clear();

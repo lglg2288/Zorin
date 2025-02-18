@@ -175,7 +175,7 @@
 
             <Viewbox Grid.Row="0" Grid.Column="1" Margin="2,0,0,0">
                 <Grid Height="720" Width="1280">
-                    <Canvas x:Name="CanvasGame" Background="White"/>
+                    <Canvas x:Name="CanvasGame" Background="White" Margin="0,0,0,0"/>
                     <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\dataset\images\NameBG.png" Stretch="Uniform" Margin="0,400,840,112"/>
                     <Rectangle x:Name="BGNarativePanel" Fill="Black" Margin="0,520,0,0" Opacity="0.5"/>
 
@@ -191,20 +191,31 @@
                 </Grid>
             </Viewbox>
 
-            <Button x:Name="AddBackGround" Grid.Row="0" Grid.Column="2" Content="Add Background" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="475,4,41,320" Click="AddBackGround_Click"/>            
-            <Label Grid.Row="0" Grid.Column="2" Content="###Auto button placement##" Foreground="White" Margin="407,75,7,249"/>
+
+            <Rectangle Fill="#202020" Grid.Row="0" Grid.Column="2"/>
 
             <Label Content="StoryLine: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,0,524,318" FontSize="17"/>
             <Label Content="Page: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,35,524,283" FontSize="17"/>
             <Label Content="Choise: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,70,524,248" FontSize="17"/>
+            <Label Content="BG:" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,104,524,211" FontSize="20"/>
+            <Label Content="Width" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="46,107,519,211" FontSize="17" RenderTransformOrigin="0.5,0.5"/>
+            <Label Content="Heigth" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="180,107,374,211" FontSize="17"/>
+            <Label Content="X" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="320,107,276,214" FontSize="17"/>
+            <Label Content="Y" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="421,107,177,214" FontSize="17"/>
 
             <ComboBox x:Name="comboBoxStoryline" Grid.Row="0" Grid.Column="2" Margin="96,4,300,320" SelectionChanged="comboBoxStoryline_SelectionChanged"/>
             <ComboBox x:Name="comboBoxPage" Grid.Row="0" Grid.Column="2" Margin="96,39,300,285" SelectionChanged="comboBoxPage_SelectionChanged"/>
+
             <TextBox x:Name="textBoxChoise" Grid.Row="0" Grid.Column="2" Margin="96,75,300,249" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
+            <TextBox x:Name="textBoxBGWidth" Grid.Row="0" Grid.Column="2" Margin="106,109,440,214" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
+            <TextBox x:Name="textBoxBGHeight" Grid.Row="0" Grid.Column="2" Margin="246,110,300,214" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
+            <TextBox x:Name="textBoxBGPositionX" Grid.Row="0" Grid.Column="2" Margin="344,110,199,214" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
+            <TextBox x:Name="textBoxBGPositionY" Grid.Row="0" Grid.Column="2" Margin="442,110,109,214" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
 
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\plusORcross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="326,4,204,318"/>
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\insert.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="339,25,164,264"/>
-            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\plusORcross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="326,74,204,248"/>            
+            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\plusORcross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="326,74,204,248"/>
+            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\addBG.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="564,102,14,206"/>
 
             <Button x:Name="btnAddStoryline" Grid.Row="0" Grid.Column="2" Margin="344,8,256,322" Opacity="0.0" Click="btnAddStoryline_Click"/>
             <Button x:Name="btnDelStoryline" Grid.Row="0" Grid.Column="2" Margin="377,8,222,322" Opacity="0.0" Click="btnDelStoryline_Click"/>
@@ -212,8 +223,10 @@
             <Button x:Name="btnDelPage" Grid.Row="0" Grid.Column="2" Margin="377,43,222,287" Opacity="0.0" Click="btnDelPage_Click"/>
             <Button x:Name="btnAddChoiсe" Grid.Row="0" Grid.Column="2" Margin="344,78,256,252" Opacity="0.0" Click="btnAddChoiсe_Click"/>
             <Button x:Name="btnDelChoiсe" Grid.Row="0" Grid.Column="2" Margin="377,78,222,252" Opacity="0.0" Click="btnDelChoiсe_Click"/>
-
             <Button x:Name="btnInsert" Grid.Row="0" Grid.Column="2" Margin="423,43,177,287" Opacity="0.0" Click="btnInsert_Click"/>
+            <Button x:Name="btnPut" Grid.Row="0" Grid.Column="2" Content="Apply" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="516,110,61,214" Click="btnPut_Click"/>
+            <Button x:Name="btnAddBackGround" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="565,110,19,214" Click="AddBackGround_Click"/>
+
 
             <StackPanel Grid.Column="0" Grid.RowSpan="2" Background="#FF191919">
                 <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\play.png" Stretch="Uniform" Margin="2,5,2,2" Height="65"/>

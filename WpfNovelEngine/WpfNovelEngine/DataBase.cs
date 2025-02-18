@@ -165,7 +165,7 @@ namespace WpfNovelEngine
                     BGImagePath = DBdata.GetValue(2) == DBNull.Value ? "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\bin\\Debug\\dataset\\images\\error404.jpg" : DBdata.GetValue(2).ToString(),
                     BGWidth     = DBdata.GetValue(3) == DBNull.Value ? 1308       : Convert.ToInt32(DBdata.GetValue(3)),
                     BGHeight    = DBdata.GetValue(4) == DBNull.Value ? 720        : Convert.ToInt32(DBdata.GetValue(4)),
-                    BGPositionX = DBdata.GetValue(5) == DBNull.Value ? 0          : Convert.ToInt32(DBdata.GetValue(5)),
+                    BGPositionX = DBdata.GetValue(5) == DBNull.Value ? -14        : Convert.ToInt32(DBdata.GetValue(5)),
                     BGPositionY = DBdata.GetValue(6) == DBNull.Value ? 0          : Convert.ToInt32(DBdata.GetValue(6))
                 };
             }
@@ -181,11 +181,11 @@ namespace WpfNovelEngine
             string commandStr = "UPDATE Pages SET ";
             if (page.Character   != null) commandStr += $"Character   = '{page.Character  }',";
             if (page.Text        != null) commandStr += $"Text        = '{page.Text       }',";
-            if (page.BGImagePath != null) commandStr += $"BGImagePath = '{page.BGImagePath}',";
-            if (page.BGWidth     != null) commandStr += $"BGWidth     = '{page.BGWidth    }',";
-            if (page.BGHeight    != null) commandStr += $"BGHeight    = '{page.BGHeight   }',";
-            if (page.BGPositionX != null) commandStr += $"BGPositionX = '{page.BGPositionX}',";
-            if (page.BGPositionY != null) commandStr += $"BGPositionY = '{page.BGPositionY}',";
+            if (page.BGImagePath != null) commandStr += $"BGImagePath = '{page.BGImagePath}',"; 
+            if (page.BGWidth     != null) commandStr += $"BGWidth     = '{page.BGWidth    }',"; else commandStr += "BGWidth     = NULL,";
+            if (page.BGHeight    != null) commandStr += $"BGHeight    = '{page.BGHeight   }',"; else commandStr += "BGHeight    = NULL,";
+            if (page.BGPositionX != null) commandStr += $"BGPositionX = '{page.BGPositionX}',"; else commandStr += "BGPositionX = NULL,";
+            if (page.BGPositionY != null) commandStr += $"BGPositionY = '{page.BGPositionY}',"; else commandStr += "BGPositionY = NULL,";
             if (commandStr[commandStr.Length - 1] == ',')
                 commandStr = commandStr.Remove(commandStr.Length - 1);
             commandStr += $" WHERE Number = {pageNumber}";

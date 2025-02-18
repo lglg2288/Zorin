@@ -113,6 +113,9 @@ namespace WpfNovelEngine
         }
         void RefreshData()
         {
+            comboBoxStoryline.SelectionChanged -= comboBoxStoryline_SelectionChanged;
+            comboBoxPage.SelectionChanged -= comboBoxPage_SelectionChanged;
+
             var SelectedItemStoryLine = comboBoxStoryline.SelectedItem;
             var SelectedItemPages = comboBoxPage.SelectedItem;            
 
@@ -140,12 +143,27 @@ namespace WpfNovelEngine
                     db.SendPage(Convert.ToInt32(SelectedItemPages), SelectedItemStoryLine.ToString(), out page);
                     if (page != null)
                     {
-                        Image background = new Image
+                        Image background;
+                        try
                         {
-                            Width = (double)page.BGWidth,
-                            Height = (double)page.BGHeight,
-                            Source = new BitmapImage(new Uri(page.BGImagePath))
-                        };
+                            background = new Image
+                            {
+                                Width = (double)page.BGWidth,
+                                Height = (double)page.BGHeight,
+                                Source = new BitmapImage(new Uri(page.BGImagePath))
+                            };
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                            background = new Image
+                            {
+                                Width = (double)page.BGWidth,
+                                Height = (double)page.BGHeight,
+                                Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\dataset\images\error404.jpg"))
+                            };
+                        }
+
                         Canvas.SetTop(background, (double)page.BGPositionY);
                         Canvas.SetLeft(background, (double)page.BGPositionX);
                         CanvasGame.Children.Clear();
@@ -153,6 +171,10 @@ namespace WpfNovelEngine
 
                         narativePanel.Text = page.Text;
                         labelCharacter.Content = page.Character;
+                        textBoxBGWidth.Text = Convert.ToString(page.BGWidth);
+                        textBoxBGHeight.Text = Convert.ToString(page.BGHeight);
+                        textBoxBGPositionX.Text = Convert.ToString(page.BGPositionX);
+                        textBoxBGPositionY.Text = Convert.ToString(page.BGPositionY);
                     }
                 }
             }
@@ -175,6 +197,10 @@ namespace WpfNovelEngine
 
             comboBoxStoryline.SelectedItem = SelectedItemStoryLine;
             comboBoxPage.SelectedItem = SelectedItemPages;
+
+
+            comboBoxStoryline.SelectionChanged += comboBoxStoryline_SelectionChanged;
+            comboBoxPage.SelectionChanged += comboBoxPage_SelectionChanged;
         }
 
         private void btnAddStoryline_Click(object sender, RoutedEventArgs e)
@@ -299,20 +325,12 @@ namespace WpfNovelEngine
 
         private void comboBoxStoryline_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            comboBoxStoryline.SelectionChanged -= comboBoxStoryline_SelectionChanged;
-
             RefreshData();
-
-            comboBoxStoryline.SelectionChanged += comboBoxStoryline_SelectionChanged;
         }
 
         private void comboBoxPage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            comboBoxPage.SelectionChanged -= comboBoxPage_SelectionChanged;
-
             RefreshData();
-
-            comboBoxPage.SelectionChanged += comboBoxPage_SelectionChanged;
         }
 
         public void InfoPanelAddText(string text)
@@ -322,7 +340,7 @@ namespace WpfNovelEngine
 
         private void AddBackGround_Click(object sender, RoutedEventArgs e)
         {
-            string projectDirectory = Directory.GetCurrentDirectory() + @"\dataset\images";
+            string projectDirectory = Directory.GetCurrentDirectory() + @"\dataset\images\background";
 
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -335,12 +353,30 @@ namespace WpfNovelEngine
             if (openFileDialog.ShowDialog() == true)
             {
                 string selectedFilePath = openFileDialog.FileName;
+                int val;
                 Page page = new Page();
                 page.BGImagePath = selectedFilePath;
+                page.BGWidth     = string.IsNullOrWhiteSpace(textBoxBGWidth.Text)     ? null : int.TryParse(textBoxBGWidth.Text,     out val) ? (int?)val : null;
+                page.BGHeight    = string.IsNullOrWhiteSpace(textBoxBGHeight.Text)    ? null : int.TryParse(textBoxBGHeight.Text,    out val) ? (int?)val : null;
+                page.BGPositionX = string.IsNullOrWhiteSpace(textBoxBGPositionX.Text) ? null : int.TryParse(textBoxBGPositionX.Text, out val) ? (int?)val : null;
+                page.BGPositionY = string.IsNullOrWhiteSpace(textBoxBGPositionY.Text) ? null : int.TryParse(textBoxBGPositionY.Text, out val) ? (int?)val : null;
                 db.SetPage(Convert.ToInt32(comboBoxPage.SelectedItem), comboBoxStoryline.SelectedItem.ToString(), in page);
 
                 RefreshData();
             }
+        }
+
+        private void btnPut_Click(object sender, RoutedEventArgs e)
+        {
+            int val;
+            Page page = new Page();
+            page.BGWidth     = string.IsNullOrWhiteSpace(textBoxBGWidth.Text)     ? null : int.TryParse(textBoxBGWidth.Text,     out val) ? (int?)val : null;
+            page.BGHeight    = string.IsNullOrWhiteSpace(textBoxBGHeight.Text)    ? null : int.TryParse(textBoxBGHeight.Text,    out val) ? (int?)val : null;
+            page.BGPositionX = string.IsNullOrWhiteSpace(textBoxBGPositionX.Text) ? null : int.TryParse(textBoxBGPositionX.Text, out val) ? (int?)val : null;
+            page.BGPositionY = string.IsNullOrWhiteSpace(textBoxBGPositionY.Text) ? null : int.TryParse(textBoxBGPositionY.Text, out val) ? (int?)val : null;
+            db.SetPage(Convert.ToInt32(comboBoxPage.SelectedItem), comboBoxStoryline.SelectedItem.ToString(), in page);
+
+            RefreshData();
         }
     }
 }

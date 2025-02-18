@@ -12,6 +12,7 @@
         Background="Black">
     <Viewbox>
         <Grid Height="720" Width="1280">
+            
             <Canvas x:Name="CanvasGame" Background="White"/>
             
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\dataset\images\NameBG.png" Stretch="Uniform" Margin="0,400,840,112"/>
