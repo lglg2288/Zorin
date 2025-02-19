@@ -192,31 +192,39 @@
             </Viewbox>
 
 
-            <Rectangle Fill="#202020" Grid.Row="0" Grid.Column="2"/>
+            <Rectangle Fill="#202020" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="619,-12,1,12"/>
 
             <Label Content="StoryLine: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,0,524,318" FontSize="17"/>
             <Label Content="Page: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,35,524,283" FontSize="17"/>
             <Label Content="Choise: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,70,524,248" FontSize="17"/>
-            <Label Content="BG:" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,104,524,211" FontSize="20"/>
-            <Label Content="Width" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="46,107,519,211" FontSize="17" RenderTransformOrigin="0.5,0.5"/>
-            <Label Content="Heigth" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="180,107,374,211" FontSize="17"/>
-            <Label Content="X" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="320,107,276,214" FontSize="17"/>
-            <Label Content="Y" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="421,107,177,214" FontSize="17"/>
-
-            <ComboBox x:Name="comboBoxStoryline" Grid.Row="0" Grid.Column="2" Margin="96,4,300,320" SelectionChanged="comboBoxStoryline_SelectionChanged"/>
-            <ComboBox x:Name="comboBoxPage" Grid.Row="0" Grid.Column="2" Margin="96,39,300,285" SelectionChanged="comboBoxPage_SelectionChanged"/>
+            <Label Content="BG:" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,126,568,188" FontSize="20"/>
+            <Label Content="Width" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="67,103,497,215" FontSize="17" RenderTransformOrigin="0.5,0.5"/>
+            <Label Content="Heigth" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="143,103,411,215" FontSize="17"/>
+            <Label Content="X" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="228,103,368,218" FontSize="17"/>
+            <Label Content="Y" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="283,103,315,218" FontSize="17"/>
+            <Label Content="FG:" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,155,566,159" FontSize="20"/>
 
             <TextBox x:Name="textBoxChoise" Grid.Row="0" Grid.Column="2" Margin="96,75,300,249" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
-            <TextBox x:Name="textBoxBGWidth" Grid.Row="0" Grid.Column="2" Margin="106,109,440,214" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
-            <TextBox x:Name="textBoxBGHeight" Grid.Row="0" Grid.Column="2" Margin="246,110,300,214" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
-            <TextBox x:Name="textBoxBGPositionX" Grid.Row="0" Grid.Column="2" Margin="344,110,199,214" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
-            <TextBox x:Name="textBoxBGPositionY" Grid.Row="0" Grid.Column="2" Margin="442,110,109,214" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
+            <TextBox x:Name="textBoxBGWidth" Grid.Row="0" Grid.Column="2" Margin="57,132,489,192" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
+            <TextBox x:Name="textBoxBGHeight" Grid.Row="0" Grid.Column="2" Margin="136,132,410,192" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
+            <TextBox x:Name="textBoxBGPositionX" Grid.Row="0" Grid.Column="2" Margin="214,132,354,192" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
+            <TextBox x:Name="textBoxBGPositionY" Grid.Row="0" Grid.Column="2" Margin="271,132,302,192" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
+            <TextBox x:Name="textBoxFGWidth" Grid.Row="0" Grid.Column="2" Margin="57,163,489,159" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
+            <TextBox x:Name="textBoxFGHeight" Grid.Row="0" Grid.Column="2" Margin="136,164,410,158" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
+            <TextBox x:Name="textBoxFGPositionX" Grid.Row="0" Grid.Column="2" Margin="214,164,354,158" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
+            <TextBox x:Name="textBoxFGPositionY" Grid.Row="0" Grid.Column="2" Margin="271,164,302,158" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
 
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\plusORcross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="326,4,204,318"/>
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\insert.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="339,25,164,264"/>
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\plusORcross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="326,74,204,248"/>
-            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\addBG.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="564,102,14,206"/>
+            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\addBG.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="371,123,207,185"/>
+            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\addBG.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="517,156,61,152"/>
+            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\red_cross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="560,163,31,158"/>
 
+            <ComboBox x:Name="comboBoxStoryline" Grid.Row="0" Grid.Column="2" Margin="96,4,300,320" SelectionChanged="comboBoxStoryline_SelectionChanged"/>
+            <ComboBox x:Name="comboBoxPage" Grid.Row="0" Grid.Column="2" Margin="96,39,300,285" SelectionChanged="comboBoxPage_SelectionChanged"/>
+            <ComboBox x:Name="comboBoxFG" Grid.Row="0" Grid.Column="2" Margin="323,164,155,158" SelectionChanged="comboBoxPage_SelectionChanged"/>
+            
             <Button x:Name="btnAddStoryline" Grid.Row="0" Grid.Column="2" Margin="344,8,256,322" Opacity="0.0" Click="btnAddStoryline_Click"/>
             <Button x:Name="btnDelStoryline" Grid.Row="0" Grid.Column="2" Margin="377,8,222,322" Opacity="0.0" Click="btnDelStoryline_Click"/>
             <Button x:Name="btnAddPage" Grid.Row="0" Grid.Column="2" Margin="344,43,256,287" Opacity="0.0" Click="btnAddPage_Click"/>
@@ -224,8 +232,10 @@
             <Button x:Name="btnAddChoiсe" Grid.Row="0" Grid.Column="2" Margin="344,78,256,252" Opacity="0.0" Click="btnAddChoiсe_Click"/>
             <Button x:Name="btnDelChoiсe" Grid.Row="0" Grid.Column="2" Margin="377,78,222,252" Opacity="0.0" Click="btnDelChoiсe_Click"/>
             <Button x:Name="btnInsert" Grid.Row="0" Grid.Column="2" Margin="423,43,177,287" Opacity="0.0" Click="btnInsert_Click"/>
-            <Button x:Name="btnPut" Grid.Row="0" Grid.Column="2" Content="Apply" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="516,110,61,214" Click="btnPut_Click"/>
-            <Button x:Name="btnAddBackGround" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="565,110,19,214" Click="AddBackGround_Click"/>
+            <Button x:Name="btnPut" Grid.Row="0" Grid.Column="2" Content="Apply" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="323,132,253,192" Click="btnPut_Click"/>
+            <Button x:Name="btnAddBackGround" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="372,131,210,191" Click="AddBackGround_Click"/>
+            <Button x:Name="btnBGPut" Grid.Row="0" Grid.Column="2" Content="Apply" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="470,163,106,159"/>
+            <Button x:Name="btnAddForeGround" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="519,164,65,159"/>
 
 
             <StackPanel Grid.Column="0" Grid.RowSpan="2" Background="#FF191919">
