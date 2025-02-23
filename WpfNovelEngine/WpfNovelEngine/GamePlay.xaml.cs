@@ -34,7 +34,7 @@ namespace WpfNovelEngine
                 MessageBox.Show("There are no Storylines");
                 this.Close();
             }
-            countPage = 0;
+            countPage = 1;
         }
 
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
@@ -45,7 +45,7 @@ namespace WpfNovelEngine
 
             if (page == null)
             {
-                MessageBox.Show("A non-existent page index was requested.");
+                MessageBox.Show($"A non-existent page Id was requested. (number = {countPage}, storyline = {Storyline})");
                 this.Close();
                 return;
             }
@@ -86,8 +86,10 @@ namespace WpfNovelEngine
             }
             Canvas.SetTop(background, (double)page.BGPositionY);
             Canvas.SetLeft(background, (double)page.BGPositionX);
-            CanvasGame.Children.Clear();
-            CanvasGame.Children.Add(background);
+            CanvasBG.Children.Clear();
+            CanvasBG.Children.Add(background);
+
+
 
             labelDialog.Content = page.Text;
             labelCharacterName.Content = page.Character;
@@ -161,7 +163,7 @@ namespace WpfNovelEngine
                         return;
                     }
                     Storyline = db.GetStoryline(choices[i].StorylineID);
-                    countPage = db.GetPageNumber(choices[i].StorylineID) - 1;
+                    countPage = db.GetPageNumber(choices[i].StorylineID);
 
                     myStackPanel.Children.Clear();
                     myBGStackPanel.Children.Clear();
@@ -172,5 +174,48 @@ namespace WpfNovelEngine
             }
             return;
         }
+
+        private void LoadForegroundObjects(string storyline, int pageNumber)
+        {
+            db.GetForegroungObjects(storyline, pageNumber, out FGObject[] fgObjects);
+
+            CanvasFG.Children.Clear();
+
+            if (fgObjects == null || fgObjects.Length == 0)
+                return;
+
+            foreach (var fgObject in fgObjects)
+            {
+                Image fgSprite = CreateImage(fgObject);
+                Canvas.SetTop(fgSprite, (double)fgObject.FGPositionY);
+                Canvas.SetLeft(fgSprite, (double)fgObject.FGPositionX);
+                CanvasFG.Children.Add(fgSprite);
+            }
+        }
+
+        private Image CreateImage(FGObject fgObject)
+        {
+            try
+            {
+                return new Image
+                {
+                    Width = (double)fgObject.FGWidth,
+                    Height = (double)fgObject.FGHeight,
+                    Source = new BitmapImage(new Uri(fgObject.FGImagePath))
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки изображения: {fgObject.FGImagePath}\n{ex.Message}");
+
+                return new Image
+                {
+                    Width = (double)fgObject.FGWidth,
+                    Height = (double)fgObject.FGHeight,
+                    Source = new BitmapImage(new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), @"dataset\images\error404.jpg")))
+                };
+            }
+        }
+
     }
 }

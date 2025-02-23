@@ -176,6 +176,90 @@ namespace WpfNovelEngine
             return;
         }
 
+        public void AddForegroundObject(string Storyline, int PageNumber, ref FGObject Fg)
+        {
+            if (PageNumber == 0)
+                return;
+            string strConnect = "";
+            strConnect += $"INSERT INTO PageCharacters(PageID) "
+                        + $"VALUES "
+                        + $"( "
+                        + $"    ( "
+                        + $"        SELECT PageID FROM Pages WHERE StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}') "
+                        + $"        AND "
+                        + $"        Number = {PageNumber} "
+                        + $"    ) "
+                        + $")";
+
+            SQLiteCommand DBcommand = new SQLiteCommand(strConnect, DBconnect);
+            DBdata = DBcommand.ExecuteReader();
+            DBdata.Close();
+
+            DBcommand.CommandText = "SELECT MAX(PageCharacterID) FROM PageCharacters;";
+            DBdata = DBcommand.ExecuteReader();
+            DBdata.Read();
+            Fg.ID = Convert.ToInt32(DBdata.GetValue(0));
+
+            SetForegroundObject(in Fg);
+            return;
+        }
+
+        public void SetForegroundObject(in FGObject Fg)
+        {
+            string commandStr = "UPDATE PageCharacters SET ";
+            if (Fg.FGImagePath != null) commandStr += $"CharacterImagePath = '{Fg.FGImagePath}',"; 
+            if (Fg.FGWidth     != null) commandStr += $"Width              = {Fg.FGWidth    },"; else commandStr += "Width     = NULL,";
+            if (Fg.FGHeight    != null) commandStr += $"Height             = {Fg.FGHeight   },"; else commandStr += "Height    = NULL,";
+            if (Fg.FGPositionX != null) commandStr += $"PositionX          = {Fg.FGPositionX},"; else commandStr += "PositionX = NULL,";
+            if (Fg.FGPositionY != null) commandStr += $"PositionY          = {Fg.FGPositionY},"; else commandStr += "PositionY = NULL,";
+            if (commandStr[commandStr.Length - 1] == ',')
+                commandStr = commandStr.Remove(commandStr.Length - 1);
+            commandStr += $" WHERE PageCharacterID = {Fg.ID}";
+
+            SQLiteCommand DBcommand = new SQLiteCommand(commandStr, DBconnect);
+            DBdata = DBcommand.ExecuteReader();
+            DBdata.Close();
+        }
+
+        public void GetForegroungObjects(string Storyline, int PageNumber, out FGObject[] FGs)
+        {
+            SQLiteCommand DBCommand = new SQLiteCommand(
+                $"SELECT CharacterImagePath, Width, Height, PositionX, PositionY, PageCharacterID FROM PageCharacters WHERE PageID = " +
+                $"( SELECT PageID FROM Pages WHERE Number = {PageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}') );",
+                DBconnect
+                );
+            DBdata = DBCommand.ExecuteReader();
+
+            FGs = new FGObject[0];
+
+            while (DBdata.Read())
+            {
+                push_up(ref FGs);
+                FGs[FGs.Length - 1] = new FGObject()
+                {
+                    FGImagePath = DBdata.GetValue(0) == DBNull.Value ? "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\bin\\Debug\\dataset\\images\\error404.jpg" : DBdata.GetValue(0).ToString(),
+                    FGWidth     = DBdata.GetValue(1) == DBNull.Value ? 1308 : Convert.ToInt32(DBdata.GetValue(1)),
+                    FGHeight    = DBdata.GetValue(2) == DBNull.Value ? 720  : Convert.ToInt32(DBdata.GetValue(2)),
+                    FGPositionX = DBdata.GetValue(3) == DBNull.Value ? -14  : Convert.ToInt32(DBdata.GetValue(3)),
+                    FGPositionY = DBdata.GetValue(4) == DBNull.Value ? 0    : Convert.ToInt32(DBdata.GetValue(4)),
+                    ID          = Convert.ToInt32(DBdata.GetValue(5)),
+                };
+            }
+            DBdata.Close();
+            if (FGs.Length <= 0)
+                FGs = null;
+            return;
+        }
+
+        public void DelForegroundObject(in FGObject Fg)
+        {
+            string commandStr = $"DELETE FROM PageCharacters WHERE PageCharacterID = {Fg.ID}";
+
+            SQLiteCommand DBcommand = new SQLiteCommand(commandStr, DBconnect);
+            DBdata = DBcommand.ExecuteReader();
+            DBdata.Close();
+        }
+
         public void SetPage(int pageNumber, string Storyline, in Page page)
         {
             string commandStr = "UPDATE Pages SET ";
@@ -270,6 +354,23 @@ namespace WpfNovelEngine
 
             return;
         }
+        public void GetChoices(int pageNumber, string Storyline, out ChoiceButton[] choices)
+        {
+            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT Text, NextPageID FROM Answers WHERE QuestionID = (SELECT QuestionID FROM Questions WHERE PageID = (SELECT PageID FROM Pages WHERE Number = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}')));", DBconnect);
+            DBdata = DBCommand.ExecuteReader();
+
+            choices = new ChoiceButton[0];            
+
+            while (DBdata.Read())
+            {
+                push_up(ref choices);
+                choices[choices.Length - 1] = new ChoiceButton(DBdata.GetValue(0).ToString(), Convert.ToInt32(DBdata.GetValue(1) == DBNull.Value ? -1 : DBdata.GetValue(1)));
+            }
+            DBdata.Close();
+            if (choices.Length <= 0)
+                choices = null;
+            return;
+        }
 
         /// <summary>
         /// удаляет свойство страницы Question если все варианты ответа удалены
@@ -279,7 +380,7 @@ namespace WpfNovelEngine
         /// <param name="answer"></param>
         public void DelChoice(string Storyline, int pageNumber, string answer)
         {
-            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT QuestionID FROM Questions WHERE PageID = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}');", DBconnect);
+            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT QuestionID FROM Questions WHERE PageID = (SELECT PageID FROM Pages WHERE Number = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}'));", DBconnect);
             DBdata = DBCommand.ExecuteReader();
             int QuestionID;
 
@@ -303,24 +404,6 @@ namespace WpfNovelEngine
                 DBdata.Close();                
             }
 
-            return;
-        }
-
-        public void GetChoices(int pageNumber, string Storyline, out ChoiceButton[] choices)
-        {
-            SQLiteCommand DBCommand = new SQLiteCommand($"SELECT Text, NextPageID FROM Answers WHERE QuestionID = (SELECT QuestionID FROM Questions WHERE PageID = (SELECT PageID FROM Pages WHERE Number = {pageNumber} AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = '{Storyline}')));", DBconnect);
-            DBdata = DBCommand.ExecuteReader();
-
-            choices = new ChoiceButton[0];            
-
-            while (DBdata.Read())
-            {
-                push_up(ref choices);
-                choices[choices.Length - 1] = new ChoiceButton(DBdata.GetValue(0).ToString(), Convert.ToInt32(DBdata.GetValue(1) == DBNull.Value ? -1 : DBdata.GetValue(1)));
-            }
-            DBdata.Close();
-            if (choices.Length <= 0)
-                choices = null;
             return;
         }
 

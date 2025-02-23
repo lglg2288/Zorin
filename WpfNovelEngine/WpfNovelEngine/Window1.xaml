@@ -174,8 +174,9 @@
             </Grid.ColumnDefinitions>
 
             <Viewbox Grid.Row="0" Grid.Column="1" Margin="2,0,0,0">
-                <Grid Height="720" Width="1280">
-                    <Canvas x:Name="CanvasGame" Background="White" Margin="0,0,0,0"/>
+                <Grid Height="720" Width="1280" Background="Black">
+                    <Canvas x:Name="CanvasBG" Background="Transparent" Margin="0,0,0,0"/>
+                    <Canvas x:Name="CanvasFG" Background="Transparent" Margin="0,0,0,0"/>
                     <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\dataset\images\NameBG.png" Stretch="Uniform" Margin="0,400,840,112"/>
                     <Rectangle x:Name="BGNarativePanel" Fill="Black" Margin="0,520,0,0" Opacity="0.5"/>
 
@@ -223,7 +224,7 @@
 
             <ComboBox x:Name="comboBoxStoryline" Grid.Row="0" Grid.Column="2" Margin="96,4,300,320" SelectionChanged="comboBoxStoryline_SelectionChanged"/>
             <ComboBox x:Name="comboBoxPage" Grid.Row="0" Grid.Column="2" Margin="96,39,300,285" SelectionChanged="comboBoxPage_SelectionChanged"/>
-            <ComboBox x:Name="comboBoxFG" Grid.Row="0" Grid.Column="2" Margin="323,164,155,158" SelectionChanged="comboBoxPage_SelectionChanged"/>
+            <ComboBox x:Name="comboBoxFG" Grid.Row="0" Grid.Column="2" Margin="323,164,155,158" SelectionChanged="comboBoxFG_SelectionChanged"/>
             
             <Button x:Name="btnAddStoryline" Grid.Row="0" Grid.Column="2" Margin="344,8,256,322" Opacity="0.0" Click="btnAddStoryline_Click"/>
             <Button x:Name="btnDelStoryline" Grid.Row="0" Grid.Column="2" Margin="377,8,222,322" Opacity="0.0" Click="btnDelStoryline_Click"/>
@@ -232,10 +233,11 @@
             <Button x:Name="btnAddChoiсe" Grid.Row="0" Grid.Column="2" Margin="344,78,256,252" Opacity="0.0" Click="btnAddChoiсe_Click"/>
             <Button x:Name="btnDelChoiсe" Grid.Row="0" Grid.Column="2" Margin="377,78,222,252" Opacity="0.0" Click="btnDelChoiсe_Click"/>
             <Button x:Name="btnInsert" Grid.Row="0" Grid.Column="2" Margin="423,43,177,287" Opacity="0.0" Click="btnInsert_Click"/>
-            <Button x:Name="btnPut" Grid.Row="0" Grid.Column="2" Content="Apply" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="323,132,253,192" Click="btnPut_Click"/>
+            <Button x:Name="btnBGPut" Grid.Row="0" Grid.Column="2" Content="Apply" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="323,132,253,192" Click="btnBGPut_Click"/>
             <Button x:Name="btnAddBackGround" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="372,131,210,191" Click="AddBackGround_Click"/>
-            <Button x:Name="btnBGPut" Grid.Row="0" Grid.Column="2" Content="Apply" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="470,163,106,159"/>
-            <Button x:Name="btnAddForeGround" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="519,164,65,159"/>
+            <Button x:Name="btnFGPut" Grid.Row="0" Grid.Column="2" Content="Apply" Background="#505050" Foreground="White" BorderBrush="#00fbff" Margin="470,163,106,159" Click="btnFGPut_Click"/>
+            <Button x:Name="btnAddForeGround" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="519,164,65,159" Click="btnAddForeGround_Click"/>
+            <Button x:Name="btnDelForeGround" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="560,164,31,159" Click="btnDelForeGround_Click"/>
 
 
             <StackPanel Grid.Column="0" Grid.RowSpan="2" Background="#FF191919">

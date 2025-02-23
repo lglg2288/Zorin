@@ -118,6 +118,7 @@ namespace WpfNovelEngine
 
             var SelectedItemStoryLine = comboBoxStoryline.SelectedItem;
             var SelectedItemPages = comboBoxPage.SelectedItem;            
+            var SelectedItemFG = comboBoxFG.SelectedItem;
 
             if (SelectedItemStoryLine != null)
             {
@@ -139,6 +140,53 @@ namespace WpfNovelEngine
                         }
                     }
 
+                    FGObject[] fgObjects;
+                    db.GetForegroungObjects(SelectedItemStoryLine.ToString(), Convert.ToInt32(SelectedItemPages), out fgObjects);
+                    if (fgObjects != null)
+                    {
+                        CanvasFG.Children.Clear();
+                        comboBoxFG.ItemsSource = null;
+                        for (int i = 0; i < fgObjects.Length; i++)
+                        {
+                            Image FGSprite;
+                            try
+                            {
+                                FGSprite = new Image {
+                                    Width = (double)fgObjects[i].FGWidth,
+                                    Height = (double)fgObjects[i].FGHeight,
+                                    Source = new BitmapImage(new Uri(fgObjects[i].FGImagePath))
+                                };
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.ToString());
+                                FGSprite = new Image {
+                                    Width = (double)fgObjects[i].FGWidth,
+                                    Height = (double)fgObjects[i].FGHeight,
+                                    Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\dataset\images\error404.jpg"))
+                                };
+                            }
+
+                            Canvas.SetTop(FGSprite, (double)fgObjects[i].FGPositionY);
+                            Canvas.SetLeft(FGSprite, (double)fgObjects[i].FGPositionX);
+
+                            CanvasFG.Children.Add(FGSprite);
+                        }
+
+                        if (SelectedItemFG != null && fgObjects != null)
+                        {
+                            comboBoxFG.SelectedItem = fgObjects.FirstOrDefault(fg => fg.ID == ((FGObject)SelectedItemFG).ID);
+                        }
+                        comboBoxFG.ItemsSource = fgObjects;
+                        comboBoxFG.DisplayMemberPath = "Name";
+                        comboBoxFG.SelectedValuePath = "ID";
+                    }
+                    else
+                    {
+                        CanvasFG.Children.Clear();
+                        comboBoxFG.ItemsSource = null;
+                    }
+
                     Page page = new Page();
                     db.SendPage(Convert.ToInt32(SelectedItemPages), SelectedItemStoryLine.ToString(), out page);
                     if (page != null)
@@ -146,8 +194,7 @@ namespace WpfNovelEngine
                         Image background;
                         try
                         {
-                            background = new Image
-                            {
+                            background = new Image {
                                 Width = (double)page.BGWidth,
                                 Height = (double)page.BGHeight,
                                 Source = new BitmapImage(new Uri(page.BGImagePath))
@@ -156,8 +203,7 @@ namespace WpfNovelEngine
                         catch(Exception ex)
                         {
                             MessageBox.Show(ex.ToString());
-                            background = new Image
-                            {
+                            background = new Image {
                                 Width = (double)page.BGWidth,
                                 Height = (double)page.BGHeight,
                                 Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\dataset\images\error404.jpg"))
@@ -166,8 +212,8 @@ namespace WpfNovelEngine
 
                         Canvas.SetTop(background, (double)page.BGPositionY);
                         Canvas.SetLeft(background, (double)page.BGPositionX);
-                        CanvasGame.Children.Clear();
-                        CanvasGame.Children.Add(background);
+                        CanvasBG.Children.Clear();
+                        CanvasBG.Children.Add(background);
 
                         narativePanel.Text = page.Text;
                         labelCharacter.Content = page.Character;
@@ -197,7 +243,7 @@ namespace WpfNovelEngine
 
             comboBoxStoryline.SelectedItem = SelectedItemStoryLine;
             comboBoxPage.SelectedItem = SelectedItemPages;
-
+                        
 
             comboBoxStoryline.SelectionChanged += comboBoxStoryline_SelectionChanged;
             comboBoxPage.SelectionChanged += comboBoxPage_SelectionChanged;
@@ -366,17 +412,93 @@ namespace WpfNovelEngine
             }
         }
 
-        private void btnPut_Click(object sender, RoutedEventArgs e)
+        private void btnBGPut_Click(object sender, RoutedEventArgs e)
         {
             int val;
             Page page = new Page();
-            page.BGWidth     = string.IsNullOrWhiteSpace(textBoxBGWidth.Text)     ? null : int.TryParse(textBoxBGWidth.Text,     out val) ? (int?)val : null;
-            page.BGHeight    = string.IsNullOrWhiteSpace(textBoxBGHeight.Text)    ? null : int.TryParse(textBoxBGHeight.Text,    out val) ? (int?)val : null;
+            page.BGWidth = string.IsNullOrWhiteSpace(textBoxBGWidth.Text) ? null : int.TryParse(textBoxBGWidth.Text, out val) ? (int?)val : null;
+            page.BGHeight = string.IsNullOrWhiteSpace(textBoxBGHeight.Text) ? null : int.TryParse(textBoxBGHeight.Text, out val) ? (int?)val : null;
             page.BGPositionX = string.IsNullOrWhiteSpace(textBoxBGPositionX.Text) ? null : int.TryParse(textBoxBGPositionX.Text, out val) ? (int?)val : null;
             page.BGPositionY = string.IsNullOrWhiteSpace(textBoxBGPositionY.Text) ? null : int.TryParse(textBoxBGPositionY.Text, out val) ? (int?)val : null;
             db.SetPage(Convert.ToInt32(comboBoxPage.SelectedItem), comboBoxStoryline.SelectedItem.ToString(), in page);
 
             RefreshData();
+        }
+
+        private void btnAddForeGround_Click(object sender, RoutedEventArgs e)
+        {
+            string projectDirectory = Directory.GetCurrentDirectory() + @"\dataset\images\foreground";
+
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Title = "Выберите изображение",
+                Filter = "Изображения (*.png;*.jpg;*.jpeg;*.bmp;*.gif)|*.png;*.jpg;*.jpeg;*.bmp;*.gif|Все файлы (*.*)|*.*",
+                Multiselect = false,
+                InitialDirectory = Directory.Exists(projectDirectory) ? projectDirectory : null
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+                int val;
+                FGObject FG = new FGObject();
+                FG.FGImagePath = selectedFilePath;
+                FG.FGWidth     = string.IsNullOrWhiteSpace(textBoxBGWidth.Text)     ? null : int.TryParse(textBoxFGWidth.Text,     out val) ? (int?)val : null;
+                FG.FGHeight    = string.IsNullOrWhiteSpace(textBoxBGHeight.Text)    ? null : int.TryParse(textBoxFGHeight.Text,    out val) ? (int?)val : null;
+                FG.FGPositionX = string.IsNullOrWhiteSpace(textBoxBGPositionX.Text) ? null : int.TryParse(textBoxFGPositionX.Text, out val) ? (int?)val : null;
+                FG.FGPositionY = string.IsNullOrWhiteSpace(textBoxBGPositionY.Text) ? null : int.TryParse(textBoxFGPositionY.Text, out val) ? (int?)val : null;
+
+                db.AddForegroundObject(comboBoxStoryline.SelectedItem.ToString(), Convert.ToInt32(comboBoxPage.SelectedItem), ref FG);
+
+                RefreshData();
+            }
+        }
+
+        private void btnFGPut_Click(object sender, RoutedEventArgs e)
+        {
+            if (comboBoxFG.SelectedItem is FGObject selectedFG)
+            {
+                int val;
+
+                selectedFG.ID = selectedFG.ID;
+                selectedFG.FGWidth     = string.IsNullOrWhiteSpace(textBoxBGWidth.Text)     ? null : int.TryParse(textBoxFGWidth.Text, out val)     ? (int?)val : null;
+                selectedFG.FGHeight    = string.IsNullOrWhiteSpace(textBoxBGHeight.Text)    ? null : int.TryParse(textBoxFGHeight.Text, out val)    ? (int?)val : null;
+                selectedFG.FGPositionX = string.IsNullOrWhiteSpace(textBoxBGPositionX.Text) ? null : int.TryParse(textBoxFGPositionX.Text, out val) ? (int?)val : null;
+                selectedFG.FGPositionY = string.IsNullOrWhiteSpace(textBoxBGPositionY.Text) ? null : int.TryParse(textBoxFGPositionY.Text, out val) ? (int?)val : null;
+
+                db.SetForegroundObject(in selectedFG);
+
+                RefreshData();
+            }
+            return;
+        }
+
+        private void comboBoxFG_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxFG.SelectedItem is FGObject selectedFG)
+            {
+                textBoxFGWidth.Text     = Convert.ToString(selectedFG.FGWidth);
+                textBoxFGHeight.Text    = Convert.ToString(selectedFG.FGHeight);
+                textBoxFGPositionX.Text = Convert.ToString(selectedFG.FGPositionX);
+                textBoxFGPositionY.Text = Convert.ToString(selectedFG.FGPositionY);
+            }
+            else
+            {
+                textBoxFGWidth.Text     = "";
+                textBoxFGHeight.Text    = "";
+                textBoxFGPositionX.Text = "";
+                textBoxFGPositionY.Text = "";
+            }
+            return;
+        }
+
+        private void btnDelForeGround_Click(object sender, RoutedEventArgs e)
+        {
+            if (comboBoxFG.SelectedItem is FGObject selectedFG)
+            {
+                db.DelForegroundObject(in selectedFG);
+                RefreshData();
+            }
         }
     }
 }

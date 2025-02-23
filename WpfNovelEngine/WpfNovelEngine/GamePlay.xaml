@@ -12,8 +12,9 @@
         Background="Black">
     <Viewbox>
         <Grid Height="720" Width="1280">
-            
-            <Canvas x:Name="CanvasGame" Background="White"/>
+
+            <Canvas x:Name="CanvasBG" Background="Transparent"/>
+            <Canvas x:Name="CanvasFG" Background="Transparent"/>
             
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\dataset\images\NameBG.png" Stretch="Uniform" Margin="0,400,840,112"/>
             <Rectangle x:Name="BGNarativePanel" Fill="Black" Margin="0,520,0,0" Opacity="0.5"/>

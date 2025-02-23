@@ -89,6 +89,7 @@
       <DependentUpon>DelStoryline.xaml</DependentUpon>
     </Compile>
     <Compile Include="DialogPage.cs" />
+    <Compile Include="FGObject.cs" />
     <Compile Include="GamePlay.xaml.cs">
       <DependentUpon>GamePlay.xaml</DependentUpon>
     </Compile>
