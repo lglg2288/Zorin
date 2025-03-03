@@ -31,7 +31,7 @@
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\delchoice.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|c:\\zorin\\wpfnovelengine\\wpfnovelengine\\page.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\page.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\page.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -39,7 +39,7 @@
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\gameplay.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|c:\\zorin\\wpfnovelengine\\wpfnovelengine\\fgobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\fgobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\fgobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -47,7 +47,7 @@
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\delchoice.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|c:\\zorin\\wpfnovelengine\\wpfnovelengine\\dblogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\dblogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\dblogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -90,8 +90,7 @@
               "RelativeToolTip": "WpfNovelEngine\\Window1.xaml.cs",
               "ViewState": "AgIAAFcBAAAAAAAAAAAlwHABAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T03:40:24.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-20T03:40:24.037Z"
             },
             {
               "$type": "Document",
@@ -103,8 +102,7 @@
               "RelativeToolTip": "WpfNovelEngine\\AddChoice.xaml.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAApwB0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-09T19:20:03.454Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T19:20:03.454Z"
             },
             {
               "$type": "Document",
@@ -116,8 +114,7 @@
               "RelativeToolTip": "WpfNovelEngine\\ChoiceButton.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwBIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-06T21:07:25.061Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-06T21:07:25.061Z"
             },
             {
               "$type": "Document",
@@ -129,8 +126,7 @@
               "RelativeToolTip": "WpfNovelEngine\\DataBase.cs",
               "ViewState": "AgIAAD0BAAAAAAAAAAAAwE0BAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T16:56:32.557Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-23T16:56:32.557Z"
             },
             {
               "$type": "Document",
@@ -142,8 +138,7 @@
               "RelativeToolTip": "WpfNovelEngine\\DBlogic.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T17:29:57.576Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T17:29:57.576Z"
             },
             {
               "$type": "Document",
@@ -155,8 +150,7 @@
               "RelativeToolTip": "WpfNovelEngine\\GamePlay.xaml.cs",
               "ViewState": "AgIAAIgAAAAAAAAAAIAwwJ8AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T03:50:01.039Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-31T03:50:01.039Z"
             },
             {
               "$type": "Document",
@@ -168,8 +162,7 @@
               "RelativeToolTip": "WpfNovelEngine\\DelChoice.xaml.cs",
               "ViewState": "AgIAABMAAAAAAAAAAIA7wC4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-06T19:10:33.153Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-06T19:10:33.153Z"
             },
             {
               "$type": "Document",
@@ -180,8 +173,7 @@
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\DelChoice.xaml",
               "RelativeToolTip": "WpfNovelEngine\\DelChoice.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-06T19:05:15.676Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-06T19:05:15.676Z"
             },
             {
               "$type": "Document",
@@ -205,8 +197,7 @@
               "RelativeToolTip": "WpfNovelEngine\\FGObject.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T17:23:34.786Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T17:23:34.786Z"
             },
             {
               "$type": "Document",
@@ -217,8 +208,7 @@
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\GamePlay.xaml",
               "RelativeToolTip": "WpfNovelEngine\\GamePlay.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-31T03:47:07.316Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-31T03:47:07.316Z"
             },
             {
               "$type": "Document",
@@ -230,8 +220,7 @@
               "RelativeToolTip": "WpfNovelEngine\\Page.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T17:23:44.977Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T17:23:44.977Z"
             },
             {
               "$type": "Document",
@@ -242,8 +231,7 @@
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\MainWindow.xaml",
               "RelativeToolTip": "WpfNovelEngine\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-06T21:25:26.821Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-06T21:25:26.821Z"
             },
             {
               "$type": "Document",
@@ -254,8 +242,7 @@
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\AddChoice.xaml",
               "RelativeToolTip": "WpfNovelEngine\\AddChoice.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-09T19:08:21.625Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T19:08:21.625Z"
             },
             {
               "$type": "Document",
