@@ -500,5 +500,10 @@ namespace WpfNovelEngine
                 RefreshData();
             }
         }
+
+        private void btnAddMusic_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

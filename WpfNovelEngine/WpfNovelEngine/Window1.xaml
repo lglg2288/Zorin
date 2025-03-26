@@ -197,7 +197,7 @@
 
             <Label Content="StoryLine: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,0,524,318" FontSize="17"/>
             <Label Content="Page: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,35,524,283" FontSize="17"/>
-            <Label Content="Choise: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,70,524,248" FontSize="17"/>
+            <Label Content="Choice: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,70,524,248" FontSize="17"/>
             <Label Content="BG:" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,126,568,188" FontSize="20"/>
             <Label Content="Width" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="67,103,497,215" FontSize="17" RenderTransformOrigin="0.5,0.5"/>
             <Label Content="Heigth" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="143,103,411,215" FontSize="17"/>
@@ -229,9 +229,9 @@
             <ComboBox x:Name="comboBoxPage" Grid.Row="0" Grid.Column="2" Margin="96,39,300,285" SelectionChanged="comboBoxPage_SelectionChanged"/>
             <ComboBox x:Name="comboBoxFG" Grid.Row="0" Grid.Column="2" Margin="323,164,155,158" SelectionChanged="comboBoxFG_SelectionChanged"/>
             <ComboBox x:Name="comboBoxMusicAction" Grid.Row="0" Grid.Column="2" Margin="323,198,155,124">
-                <ComboBoxItem Content="Play ▶"/>
-                <ComboBoxItem Content="Pause⏸"/>
-                <ComboBoxItem Content="Stop ⏹"/>
+                <ComboBoxItem Content="▶ Play"/>
+                <ComboBoxItem Content="⏸ Pause"/>
+                <ComboBoxItem Content="⏹ Stop"/>
             </ComboBox>
             
             <Button x:Name="btnAddStoryline" Grid.Row="0" Grid.Column="2" Margin="344,8,256,322" Opacity="0.0" Click="btnAddStoryline_Click"/>
@@ -246,14 +246,8 @@
             <Button x:Name="btnFGPut" Grid.Row="0" Grid.Column="2" Content="Apply" Background="#3F3F3F" Foreground="White" BorderBrush="#00fbff" Margin="470,163,106,159" Click="btnFGPut_Click"/>
             <Button x:Name="btnAddForeGround" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="519,164,65,159" Click="btnAddForeGround_Click"/>
             <Button x:Name="btnDelForeGround" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="560,164,31,159" Click="btnDelForeGround_Click"/>
-            <Button x:Name="btnAddMusic" Content="🎵+" Grid.Row="0" Grid.Column="2" Background="#3F3F3F" Foreground="#00fbff" BorderBrush="#FF97A0A5" BorderThickness="2" Margin="288,198,302,124"/>
+            <Button x:Name="btnAddMusic" Content="🎵+" Grid.Row="0" Grid.Column="2" Background="#3F3F3F" Foreground="#00fbff" BorderBrush="#FF97A0A5" BorderThickness="2" Margin="288,198,302,124" Click="btnAddMusic_Click"/>
             <Button x:Name="btnDelMusic" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="520,198,72,124"/>
-            
-            
-
-
-
-            
             <Button x:Name="btnMusicAction" Content="Apply" Grid.Row="0" Grid.Column="2" Background="#3F3F3F" Foreground="White" BorderBrush="#00fbff" Margin="470,198,106,124"/>
 
 

@@ -3,28 +3,36 @@
   "WorkspaceRootPath": "C:\\Zorin\\WpfNovelEngine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|c:\\zorin\\wpfnovelengine\\wpfnovelengine\\window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\addchoice.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\addchoice.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\mechanics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\mechanics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\choicebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\choicebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\gameplay.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\gameplay.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|c:\\zorin\\wpfnovelengine\\wpfnovelengine\\fgobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\fgobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\window1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\window1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\window1.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\window1.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\gameplay.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\gameplay.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\delchoice.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,10 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\gameplay.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\gameplay.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\fgobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|solutionrelative:wpfnovelengine\\fgobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C6E8A31C-7A46-4B73-B7EF-508DC6669314}|WpfNovelEngine\\WpfNovelEngine.csproj|C:\\Zorin\\WpfNovelEngine\\wpfnovelengine\\delchoice.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -74,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 97,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,27 +86,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Window1.xaml.cs",
-              "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\Window1.xaml.cs",
-              "RelativeDocumentMoniker": "WpfNovelEngine\\Window1.xaml.cs",
-              "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\Window1.xaml.cs",
-              "RelativeToolTip": "WpfNovelEngine\\Window1.xaml.cs",
-              "ViewState": "AgIAAFcBAAAAAAAAAAAlwHABAAAMAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Mechanics.cs",
+              "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\Mechanics.cs",
+              "RelativeDocumentMoniker": "WpfNovelEngine\\Mechanics.cs",
+              "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\Mechanics.cs",
+              "RelativeToolTip": "WpfNovelEngine\\Mechanics.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T03:40:24.037Z"
+              "WhenOpened": "2025-03-06T17:02:40.77Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AddChoice.xaml.cs",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\AddChoice.xaml.cs",
               "RelativeDocumentMoniker": "WpfNovelEngine\\AddChoice.xaml.cs",
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\AddChoice.xaml.cs",
               "RelativeToolTip": "WpfNovelEngine\\AddChoice.xaml.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAApwB0AAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-09T19:20:03.454Z"
+              "WhenOpened": "2025-02-09T19:20:03.454Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -114,23 +120,25 @@
               "RelativeToolTip": "WpfNovelEngine\\ChoiceButton.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwBIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-06T21:07:25.061Z"
+              "WhenOpened": "2025-02-06T21:07:25.061Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "DataBase.cs",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\DataBase.cs",
               "RelativeDocumentMoniker": "WpfNovelEngine\\DataBase.cs",
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\DataBase.cs",
               "RelativeToolTip": "WpfNovelEngine\\DataBase.cs",
-              "ViewState": "AgIAAD0BAAAAAAAAAAAAwE0BAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAcwE0BAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T16:56:32.557Z"
+              "WhenOpened": "2025-01-23T16:56:32.557Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "DBlogic.cs",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\DBlogic.cs",
               "RelativeDocumentMoniker": "WpfNovelEngine\\DBlogic.cs",
@@ -142,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "GamePlay.xaml.cs",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\GamePlay.xaml.cs",
               "RelativeDocumentMoniker": "WpfNovelEngine\\GamePlay.xaml.cs",
@@ -154,7 +162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "DelChoice.xaml.cs",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\DelChoice.xaml.cs",
               "RelativeDocumentMoniker": "WpfNovelEngine\\DelChoice.xaml.cs",
@@ -166,7 +174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "DelChoice.xaml",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\DelChoice.xaml",
               "RelativeDocumentMoniker": "WpfNovelEngine\\DelChoice.xaml",
@@ -177,31 +185,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "Window1.xaml",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\Window1.xaml",
               "RelativeDocumentMoniker": "WpfNovelEngine\\Window1.xaml",
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\Window1.xaml",
               "RelativeToolTip": "WpfNovelEngine\\Window1.xaml",
+              "ViewState": "AgIAAOcAAAAAAAAAAAAMwPgAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-20T03:40:15.055Z",
+              "WhenOpened": "2025-03-06T17:01:19.848Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
+              "Title": "Window1.xaml.cs",
+              "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\Window1.xaml.cs",
+              "RelativeDocumentMoniker": "WpfNovelEngine\\Window1.xaml.cs",
+              "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\Window1.xaml.cs",
+              "RelativeToolTip": "WpfNovelEngine\\Window1.xaml.cs",
+              "ViewState": "AgIAAO4BAAAAAAAAAAAIwPkBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T03:40:24.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "FGObject.cs",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\FGObject.cs",
               "RelativeDocumentMoniker": "WpfNovelEngine\\FGObject.cs",
               "ToolTip": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\FGObject.cs",
               "RelativeToolTip": "WpfNovelEngine\\FGObject.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T17:23:34.786Z"
+              "WhenOpened": "2025-02-23T17:23:34.786Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "GamePlay.xaml",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\GamePlay.xaml",
               "RelativeDocumentMoniker": "WpfNovelEngine\\GamePlay.xaml",
@@ -212,7 +234,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Page.cs",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\Page.cs",
               "RelativeDocumentMoniker": "WpfNovelEngine\\Page.cs",
@@ -224,7 +246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\MainWindow.xaml",
               "RelativeDocumentMoniker": "WpfNovelEngine\\MainWindow.xaml",
@@ -235,7 +257,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "AddChoice.xaml",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\AddChoice.xaml",
               "RelativeDocumentMoniker": "WpfNovelEngine\\AddChoice.xaml",
@@ -246,7 +268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "WpfNovelEngine\\MainWindow.xaml.cs",
@@ -258,7 +280,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "DialogPage.cs",
               "DocumentMoniker": "C:\\Zorin\\WpfNovelEngine\\WpfNovelEngine\\DialogPage.cs",
               "RelativeDocumentMoniker": "WpfNovelEngine\\DialogPage.cs",
