@@ -22,43 +22,47 @@ namespace WpfNovelEngine
     public partial class GamePlay : Window
     {
         private DataBase db;
-        private int countPage;
-        private string Storyline;
+        private int currentPage;
+        private string currentStoryline;
         public GamePlay()
         {
             InitializeComponent();
             db = new DataBase();
-            Storyline = db.GetFirstStorylineName();
-            if (Storyline == null)
+            currentStoryline = db.GetFirstStorylineName();
+            if (currentStoryline == null)
             {
                 MessageBox.Show("There are no Storylines");
                 this.Close();
             }
-            countPage = 1;
+            currentPage = 0;
+            MusicManager.StopAll();
         }
 
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
+            currentPage++;
+
+            MusicManager.init(currentStoryline, currentPage, false);
+
             btnNextPage.Visibility = Visibility.Visible;
             Page page;
-            db.SendPage(countPage, Storyline, out page);
+            db.SendPage(currentPage, currentStoryline, out page);
 
             if (page == null)
             {
-                MessageBox.Show($"A non-existent page Id was requested. (number = {countPage}, storyline = {Storyline})");
+                MessageBox.Show($"A non-existent page Id was requested. (number = {currentPage}, storyline = {currentStoryline})");
                 this.Close();
                 return;
             }
 
-            countPage++;
 
 
-            if (db.pageIsQuestion(countPage, Storyline))
+            if (db.pageIsQuestion(currentPage, currentStoryline))
             {
                 ChoiceButton[] choices;
-                db.GetChoices(countPage, Storyline, out choices);
+                db.GetChoices(currentPage, currentStoryline, out choices);
                 if (choices == null)
-                    db.delQuestion(countPage, Storyline);
+                    db.delQuestion(currentPage, currentStoryline);
                 else
                     AddChoiсeButton(in choices);
                 btnNextPage.Visibility = Visibility.Hidden;
@@ -89,7 +93,7 @@ namespace WpfNovelEngine
             CanvasBG.Children.Clear();
             CanvasBG.Children.Add(background);
 
-
+            LoadForegroundObjects(currentStoryline, currentPage);
 
             labelDialog.Content = page.Text;
             labelCharacterName.Content = page.Character;
@@ -151,7 +155,7 @@ namespace WpfNovelEngine
             {
                 buttonName += senderStr[i];
             }
-            db.GetChoices(countPage, Storyline, out choices);
+            db.GetChoices(currentPage, currentStoryline, out choices);
 
             for (int i = 0; i < choices.Length; i++)
             {
@@ -162,8 +166,8 @@ namespace WpfNovelEngine
                         this.Close();
                         return;
                     }
-                    Storyline = db.GetStoryline(choices[i].StorylineID);
-                    countPage = db.GetPageNumber(choices[i].StorylineID);
+                    currentStoryline = db.GetStoryline(choices[i].StorylineID);
+                    currentPage = db.GetPageNumber(choices[i].StorylineID);
 
                     myStackPanel.Children.Clear();
                     myBGStackPanel.Children.Clear();

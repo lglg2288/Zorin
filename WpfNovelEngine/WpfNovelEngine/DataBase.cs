@@ -76,6 +76,7 @@ namespace WpfNovelEngine
                 return Convert.ToInt32(maxPageNumber) + 1;
             }
         }
+
         public void Addpage(string StorylineName, int pageNumber)
         {
             if (pageNumber == 0)
@@ -478,14 +479,96 @@ namespace WpfNovelEngine
                 return 0;
             }
         }
+        public void AddMusic(in MusicEntry music)
+        {
+            string strCommand = "INSERT INTO Musics (Path, ActionType, MusicType, Volume, PageID) VALUES (@Path, @ActionType, @MusicType, @Volume, @PageID);";
+            using (var command = new SQLiteCommand(strCommand, DBconnect))
+            {
+                command.Parameters.AddWithValue("@Path", music.Path);
+                command.Parameters.AddWithValue("@ActionType", music.ActionType);
+                command.Parameters.AddWithValue("@MusicType", music.MusicType);
+                command.Parameters.AddWithValue("@Volume", music.Volume);
+                command.Parameters.AddWithValue("@PageID", music.PageID);
 
+                command.ExecuteNonQuery();
+            }
+        }
+        public List<MusicEntry> GetMusicsForPage(int pageId)
+        {
+            List<MusicEntry> musics = new List<MusicEntry>();
+
+            string query = "SELECT ID, Path, ActionType, MusicType, Volume, PageID FROM Musics WHERE PageID = @PageID;";
+            using (var command = new SQLiteCommand(query, DBconnect))
+            {
+                command.Parameters.AddWithValue("@PageID", pageId);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        musics.Add(new MusicEntry
+                        {
+                            ID = reader.GetInt32(0),
+                            Path = reader.GetString(1),
+                            ActionType = reader.GetString(2),
+                            MusicType = reader.GetString(3),
+                            Volume = reader.GetInt32(4),
+                            PageID = reader.GetInt32(5)
+                        });
+                    }
+                }
+            }
+
+            return musics;
+        }
+
+        public void UpdateMusic(MusicEntry music)
+        {
+            string query = @"
+                            UPDATE Musics 
+                            SET Path = @Path, 
+                                ActionType = @ActionType, 
+                                MusicType = @MusicType, 
+                                Volume = @Volume, 
+                                PageID = @PageID
+                            WHERE ID = @ID;";
+
+            using (var command = new SQLiteCommand(query, DBconnect))
+            {
+                command.Parameters.AddWithValue("@Path", music.Path);
+                command.Parameters.AddWithValue("@ActionType", music.ActionType);
+                command.Parameters.AddWithValue("@MusicType", music.MusicType);
+                command.Parameters.AddWithValue("@Volume", music.Volume);
+                command.Parameters.AddWithValue("@PageID", music.PageID);
+                command.Parameters.AddWithValue("@ID", music.ID);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public int? GetPageId(string Storyline, int PageNum)
+        {
+            string strCommand = "SELECT PageID FROM Pages WHERE Number = @PageNum AND StorylineID = (SELECT StorylineID FROM Storylines WHERE Name = @Storyline);";
+
+            using (var command = new SQLiteCommand(strCommand, DBconnect))
+            {
+                command.Parameters.AddWithValue("@PageNum", PageNum);
+                command.Parameters.AddWithValue("@Storyline", Storyline);
+
+                var getedData = command.ExecuteScalar();
+
+                if (getedData == null || getedData is DBNull)
+                    return null;
+
+                return Convert.ToInt32(getedData); ;
+            }
+        }
         public SQLiteDataReader custom(string SQLcommand)
         {
             SQLiteCommand DBCommand = new SQLiteCommand(SQLcommand, DBconnect);
             SQLiteDataReader dataReader = DBCommand.ExecuteReader();
             return dataReader;
         }
-
         private void push_up<T>(ref T[] arr)
         {
             T[] newArr = new T[arr.Length + 1];

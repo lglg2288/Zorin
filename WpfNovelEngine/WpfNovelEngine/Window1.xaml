@@ -205,6 +205,7 @@
             <Label Content="Y" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="283,103,315,218" FontSize="17"/>
             <Label Content="FG:" Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,155,566,159" FontSize="20"/>
             <Label Content="Music: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="10,196,549,124" FontSize="17"/>
+            <Label Content="MusicVolume: " Foreground="White" Grid.Row="0" Grid.Column="2" Margin="19,219,517,108" FontSize="12"/>
 
             <TextBox x:Name="textBoxChoise" Grid.Row="0" Grid.Column="2" Margin="96,75,300,249" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
             <TextBox x:Name="textBoxBGWidth" Grid.Row="0" Grid.Column="2" Margin="57,132,489,192" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
@@ -215,7 +216,6 @@
             <TextBox x:Name="textBoxFGHeight" Grid.Row="0" Grid.Column="2" Margin="136,164,410,158" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
             <TextBox x:Name="textBoxFGPositionX" Grid.Row="0" Grid.Column="2" Margin="214,164,354,158" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
             <TextBox x:Name="textBoxFGPositionY" Grid.Row="0" Grid.Column="2" Margin="271,164,302,158" Background="#FF3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" FontSize="15"/>
-            <TextBox x:Name="textBoxMusicName" Grid.Row="0" Grid.Column="2" Margin="71,198,330,124" Background="#3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" IsReadOnly="True"/>
 
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\plusORcross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="326,4,204,318"/>
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\insert.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="339,25,164,264"/>
@@ -223,17 +223,23 @@
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\addBG.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="371,123,207,185"/>
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\addBG.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="517,156,61,152"/>
             <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\red_cross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="560,163,31,158"/>
-            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\red_cross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="519,197,71,123"/>
+            <Image Source="C:\Zorin\WpfNovelEngine\WpfNovelEngine\bin\Debug\sprites\red_cross.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2" Margin="560,197,30,123"/>
 
             <ComboBox x:Name="comboBoxStoryline" Grid.Row="0" Grid.Column="2" Margin="96,4,300,320" SelectionChanged="comboBoxStoryline_SelectionChanged"/>
             <ComboBox x:Name="comboBoxPage" Grid.Row="0" Grid.Column="2" Margin="96,39,300,285" SelectionChanged="comboBoxPage_SelectionChanged"/>
             <ComboBox x:Name="comboBoxFG" Grid.Row="0" Grid.Column="2" Margin="323,164,155,158" SelectionChanged="comboBoxFG_SelectionChanged"/>
-            <ComboBox x:Name="comboBoxMusicAction" Grid.Row="0" Grid.Column="2" Margin="323,198,155,124">
+            <ComboBox x:Name="comboBoxMusics" Grid.Row="0" Grid.Column="2" Margin="71,198,293,124" Background="#3F3F3F" Foreground="White" BorderBrush="#FF97A0A5" BorderThickness="2" SelectionChanged="comboBoxMusics_SelectionChanged"/>
+            <ComboBox x:Name="comboBoxMusicAction" Grid.Row="0" Grid.Column="2" Margin="362,198,116,124">
                 <ComboBoxItem Content="▶ Play"/>
                 <ComboBoxItem Content="⏸ Pause"/>
                 <ComboBoxItem Content="⏹ Stop"/>
             </ComboBox>
-            
+            <ComboBox x:Name="comboBoxMusicType" Grid.Row="0" Grid.Column="2" Margin="360,230,116,92">
+                <ComboBoxItem Content="Background"/>
+                <ComboBoxItem Content="Effect"/>
+                <ComboBoxItem Content="Voice"/>
+            </ComboBox>
+
             <Button x:Name="btnAddStoryline" Grid.Row="0" Grid.Column="2" Margin="344,8,256,322" Opacity="0.0" Click="btnAddStoryline_Click"/>
             <Button x:Name="btnDelStoryline" Grid.Row="0" Grid.Column="2" Margin="377,8,222,322" Opacity="0.0" Click="btnDelStoryline_Click"/>
             <Button x:Name="btnAddPage" Grid.Row="0" Grid.Column="2" Margin="344,43,256,287" Opacity="0.0" Click="btnAddPage_Click"/>
@@ -246,9 +252,15 @@
             <Button x:Name="btnFGPut" Grid.Row="0" Grid.Column="2" Content="Apply" Background="#3F3F3F" Foreground="White" BorderBrush="#00fbff" Margin="470,163,106,159" Click="btnFGPut_Click"/>
             <Button x:Name="btnAddForeGround" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="519,164,65,159" Click="btnAddForeGround_Click"/>
             <Button x:Name="btnDelForeGround" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="560,164,31,159" Click="btnDelForeGround_Click"/>
-            <Button x:Name="btnAddMusic" Content="🎵+" Grid.Row="0" Grid.Column="2" Background="#3F3F3F" Foreground="#00fbff" BorderBrush="#FF97A0A5" BorderThickness="2" Margin="288,198,302,124" Click="btnAddMusic_Click"/>
-            <Button x:Name="btnDelMusic" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="520,198,72,124"/>
-            <Button x:Name="btnMusicAction" Content="Apply" Grid.Row="0" Grid.Column="2" Background="#3F3F3F" Foreground="White" BorderBrush="#00fbff" Margin="470,198,106,124"/>
+            <Button x:Name="btnAddMusic" Content="🎵+" Grid.Row="0" Grid.Column="2" Background="#3F3F3F" Foreground="#00fbff" BorderBrush="#FF97A0A5" BorderThickness="2" Margin="325,198,266,124" Click="btnAddMusic_Click"/>
+            <Button x:Name="btnDelMusic" Grid.Row="0" Grid.Column="2" Opacity="0.0" Margin="561,198,31,124"/>
+            <Button x:Name="btnMusicPropApply" Content="Apply" Grid.Row="0" Grid.Column="2" Background="#3F3F3F" Foreground="White" BorderBrush="#00fbff" Margin="545,232,31,90" Click="btnMusicPropApply_Click"/>
+            <Button x:Name="btnDemoMusicPlay" Content="▶" Grid.Row="0" Grid.Column="2" Background="#3F3F3F" Foreground="#00fbff" BorderBrush="#00fbff" Margin="509,198,82,124" Click="btnDemoMusicPlay_Click"/>
+            <Button x:Name="btnDemoMusicStop" Content="⏹" Grid.Row="0" Grid.Column="2" Background="#3F3F3F" Foreground="#00fbff" BorderBrush="#00fbff" Margin="509,231,82,91" Click="btnDemoMusicStop_Click"/>
+
+            
+            <Slider x:Name="sliderVolumeMusic" Grid.Row="0" Grid.Column="2" Minimum="1" Maximum="100" Value="50" TickFrequency="1" IsSnapToTickEnabled="True" Margin="103,226,266,108" Foreground="#101010"/>
+
 
 
 

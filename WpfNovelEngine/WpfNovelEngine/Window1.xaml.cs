@@ -29,7 +29,8 @@ namespace WpfNovelEngine
     public partial class Window1 : Window
     {
         DataBase db = new DataBase();
-        
+        private List<MusicEntry> musicEntries;
+
         public Window1()
         {
             InitializeComponent();
@@ -180,6 +181,17 @@ namespace WpfNovelEngine
                         comboBoxFG.ItemsSource = fgObjects;
                         comboBoxFG.DisplayMemberPath = "Name";
                         comboBoxFG.SelectedValuePath = "ID";
+
+                        //Music                        
+                        int? PageId = db.GetPageId(comboBoxStoryline.SelectedItem.ToString(), Convert.ToInt32(comboBoxPage.SelectedItem));
+
+                        if (PageId != null)
+                        {
+                            musicEntries = db.GetMusicsForPage((int)PageId);
+                            comboBoxMusics.ItemsSource = musicEntries;
+                            comboBoxMusics.DisplayMemberPath = "Path"; // Показывает путь
+                            comboBoxMusics.SelectedValuePath = "ID";
+                        }
                     }
                     else
                     {
@@ -503,7 +515,85 @@ namespace WpfNovelEngine
 
         private void btnAddMusic_Click(object sender, RoutedEventArgs e)
         {
+            string projectDirectory = Directory.GetCurrentDirectory() + @"\dataset\sounds";
 
+            OpenFileDialog openfiledialog = new OpenFileDialog
+            {
+                Title = "Выберите мелодию",
+                Filter = "Изображения (*.mp3;|*.mp3;|Все файлы (*.*)|*.*",
+                Multiselect = false,
+                InitialDirectory = Directory.Exists(projectDirectory) ? projectDirectory : null
+            };
+
+            if (openfiledialog.ShowDialog() == true)
+            {
+                string selectedFilePath = openfiledialog.FileName;
+                int? PageId = db.GetPageId(comboBoxStoryline.SelectedItem.ToString(), Convert.ToInt32(comboBoxPage.SelectedItem));
+
+                if (PageId == null)
+                {
+                    MessageBox.Show($"Don't found pageId with prop Storyline: {comboBoxStoryline.SelectedItem.ToString()}, Pagenum: {Convert.ToInt32(comboBoxPage.SelectedItem)}");
+                    return;
+                }
+
+                MusicEntry entry = new MusicEntry();
+                entry.PageID = (int)PageId;
+                entry.Path = selectedFilePath;
+                entry.ActionType = (comboBoxMusicAction.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "▶ Play";
+                entry.MusicType = (comboBoxMusicType.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "Background";
+                entry.Volume = (int)sliderVolumeMusic.Value;
+
+                db.AddMusic(entry);
+                RefreshData();
+            }
+        }
+
+        private void comboBoxMusics_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxMusics.SelectedItem is MusicEntry currentMusic)
+            {
+                comboBoxMusicAction.SelectedItem = comboBoxMusicAction.Items
+                    .OfType<ComboBoxItem>()
+                    .FirstOrDefault(item => item.Content.ToString() == currentMusic.ActionType);
+
+                comboBoxMusicType.SelectedItem = comboBoxMusicType.Items
+                    .OfType<ComboBoxItem>()
+                    .FirstOrDefault(item => item.Content.ToString() == currentMusic.MusicType);
+
+            }
+        }
+
+        private void btnMusicPropApply_Click(object sender, RoutedEventArgs e)
+        {
+            if (comboBoxMusics.SelectedItem is MusicEntry currentMusic)
+            {
+                MusicEntry entry = new MusicEntry();
+                entry.ID = currentMusic.ID;
+                entry.PageID = currentMusic.PageID;
+                entry.Path = currentMusic.Path;
+                entry.ActionType = (comboBoxMusicAction.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "▶ Play";
+                entry.MusicType = (comboBoxMusicType.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "Background";
+                entry.Volume = (int)sliderVolumeMusic.Value;
+
+                db.UpdateMusic(entry);
+                RefreshData();
+            }
+            else
+            {
+                MessageBox.Show("It looks like there is no melody selected");
+            }
+        }
+
+
+
+        private void btnDemoMusicPlay_Click(object sender, RoutedEventArgs e)
+        {
+            MusicManager.init(comboBoxStoryline.SelectedItem?.ToString(), Convert.ToInt32(comboBoxPage.SelectedItem), true);
+        }
+
+        private void btnDemoMusicStop_Click(object sender, RoutedEventArgs e)
+        {
+            MusicManager.StopAll();
         }
     }
 }

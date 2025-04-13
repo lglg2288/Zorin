@@ -94,6 +94,7 @@
       <DependentUpon>GamePlay.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mechanics.cs" />
+    <Compile Include="MusicManager.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="QuestionPage.cs" />
     <Compile Include="Window1.xaml.cs">

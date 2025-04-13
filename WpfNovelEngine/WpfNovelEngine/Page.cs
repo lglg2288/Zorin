@@ -16,4 +16,14 @@ namespace WpfNovelEngine
         public int? BGPositionX;
         public int? BGPositionY;
     }
+    public class MusicEntry
+    {
+        public int ID { get; set; }
+        public string Path { get; set; }
+        public string ActionType { get; set; }   // Play, Pause, Stop
+        public string MusicType { get; set; }    // Background, Effect
+        public int Volume { get; set; }          // 0-100
+        public int PageID { get; set; }
+    }
+
 }
